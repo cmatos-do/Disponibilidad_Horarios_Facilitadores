@@ -4,28 +4,27 @@ Esta es una herramienta de alta fidelidad para procesar, visualizar y analizar l
 
 ---
 
-## 🚀 ¿Cómo actualizar los horarios de los facilitadores?
+## ⚡️ Actualización de Horarios Interactiva (Automática)
 
-Para actualizar la base de datos o agregar nuevos facilitadores a la herramienta, simplemente sigue estos pasos:
+Para que todos tus archivos nuevos se detecten y procesen al instante, hemos implementado un **Servidor de Desarrollo y Auto-Actualizador en Tiempo Real**:
 
-1. **Sube el archivo PDF del facilitador** (por ejemplo, `Horario Ruth Uceta.pdf`) en la carpeta:
+1. **Inicia el servidor local** desde la terminal:
+   ```bash
+   python3 server.py
+   ```
+   *Esto iniciará un servidor web ligero y un vigilante en segundo plano (watcher) que escucha la carpeta `horarios/`.*
+
+2. **Sube tus archivos PDF** a la carpeta:
    ```bash
    horarios/
    ```
-   *Puedes colocar todos los PDFs de facilitadores que desees analizar simultáneamente.*
+   *En el momento en que guardes, elimines o edites cualquier archivo PDF en esta carpeta, el servidor detectará el cambio automáticamente y re-ejecutará el parser en milisegundos.*
 
-2. **Ejecuta el script de procesamiento/parseo** para extraer y consolidar automáticamente todos los datos, horarios, materias, códigos y solapamientos:
+3. **Visita la aplicación web** en tu navegador preferido:
    ```bash
-   python3 parse_pdf.py
+   http://localhost:8000
    ```
-   Este comando regenerará automáticamente los archivos de base de datos del cliente:
-   - `data.json` (Para consultas estructuradas en backend/APIs)
-   - `data.js` (Cargado en caliente por el panel web)
-
-3. **¡Listo!** Abre o refresca el visualizador interactivo:
-   ```bash
-   index.html
-   ```
+   *Al refrescar o navegar, el visualizador cargará la base de datos totalmente actualizada con los nuevos facilitadores.*
 
 ---
 
@@ -39,6 +38,7 @@ El panel de control cuenta con un diseño limpio, profesional e intuitivo (dise�
     - **Modalidad:** Presencial, Virtual, Semipresencial.
     - **Código de Acción/Curso:** Carga códigos individuales o todos simultáneamente.
     - **Materia o Módulo:** Filtra clases por módulos específicos.
+*   **Boton "Ver Huecos / Horarios Disponibles" (NUEVO):** Al hacer clic, la matriz semanal de horarios (Heatmap) y el Calendario Mensual cambian de estado para resaltar en verde brillante y de forma clara exactamente **los bloques de tiempo libres (huecos de disponibilidad)** del facilitador para una asignación rápida de nuevas clases.
 *   **Calendario Mensual Interactivo (FullCalendar):** Visualiza los días exactos y las horas de las clases. Haz clic en cualquier evento del calendario para ver un desglose completo de la materia, regional, horario semanal recurrente y modalidad.
 *   **Matriz Semanal de Horarios (Heatmap):** Una representación consolidada de las horas en las que el facilitador tiene asignaciones recurrentes a lo largo de los días de la semana, marcando como "Disponible" las horas libres.
 *   **Línea de Tiempo (Gantt Chart):** Permite ver en paralelo la duración (fechas de inicio y término) de cada materia asignada para identificar con facilidad la duración global del curso.

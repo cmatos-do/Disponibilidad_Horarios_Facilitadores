@@ -199,6 +199,15 @@
                     </select>
                 </div>
 
+                <!-- Availability Gaps Toggle (User Request) -->
+                <div class="space-y-2 pt-2 border-t border-slate-100">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-500">Visualización de Huecos</label>
+                    <button id="btn-toggle-gaps" onclick="toggleGapsView()" class="w-full py-2.5 px-4 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 border border-emerald-200 bg-emerald-50 text-emerald-800 hover:bg-emerald-100/70 shadow-sm">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        <span>Ver Horarios Disponibles (Huecos)</span>
+                    </button>
+                </div>
+
                 <!-- Quick Help / Details -->
                 <div class="bg-indigo-50/50 rounded-xl p-4 border border-indigo-100 space-y-2">
                     <h3 class="text-xs font-bold text-indigo-800 uppercase tracking-wider flex items-center gap-1.5">
@@ -234,8 +243,8 @@
                 <div id="tab-content-calendar" class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
                         <div>
-                            <h3 class="text-lg font-bold text-slate-900">Agenda Mensual / Diaria</h3>
-                            <p class="text-xs text-slate-500">Visualiza exactamente los días asignados y haz clic en un evento para detalles completos.</p>
+                            <h3 class="text-lg font-bold text-slate-900" id="calendar-header-title">Agenda Mensual / Diaria</h3>
+                            <p class="text-xs text-slate-500" id="calendar-header-desc">Visualiza exactamente los días asignados y haz clic en un evento para detalles completos.</p>
                         </div>
                         <div class="flex items-center gap-4 text-xs font-semibold">
                             <span class="flex items-center gap-1.5"><span class="h-3 w-3 rounded-full bg-indigo-600"></span> Presencial</span>
@@ -249,8 +258,8 @@
                 <!-- Tab content 2: Weekly Heatmap Matrix -->
                 <div id="tab-content-weekly" class="hidden bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4">
                     <div>
-                        <h3 class="text-lg font-bold text-slate-900">Matriz de Horas Semanales</h3>
-                        <p class="text-xs text-slate-500">Representación consolidada de los bloques horarios recurrentes por día de la semana.</p>
+                        <h3 class="text-lg font-bold text-slate-900" id="weekly-header-title">Matriz de Horas Semanales</h3>
+                        <p class="text-xs text-slate-500" id="weekly-header-desc">Representación consolidada de los bloques horarios recurrentes por día de la semana.</p>
                     </div>
 
                     <div class="overflow-x-auto border border-slate-100 rounded-xl custom-scrollbar">
@@ -412,12 +421,32 @@
         let calendarInstance = null;
         let activeTab = 'calendar';
         let currentFacilitator = null;
+        let showGapsOnly = false; // User requested: Availability Gaps View State
 
         // Helper to convert date DD/MM/YYYY to ISO YYYY-MM-DD
         function parseToIso(dateStr) {
             const parts = dateStr.split('/');
             if (parts.length !== 3) return null;
             return `${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`;
+        }
+
+        // Helper to get active facilitator start and end bounds
+        function getFacilitatorDateBounds(courses) {
+            let minDate = null;
+            let maxDate = null;
+            courses.forEach(course => {
+                course.schedules.forEach(sched => {
+                    const sIso = parseToIso(sched.start_date);
+                    const eIso = parseToIso(sched.end_date);
+                    if (sIso && eIso) {
+                        const startD = new Date(sIso + 'T00:00:00');
+                        const endD = new Date(eIso + 'T23:59:59');
+                        if (!minDate || startD < minDate) minDate = startD;
+                        if (!maxDate || endD > maxDate) maxDate = endD;
+                    }
+                });
+            });
+            return { minDate, maxDate };
         }
 
         const weekdayIndexMap = {
@@ -477,6 +506,33 @@
                 loadFacilitator(SCHEDULE_DATABASE.facilitators[0]);
             }
         });
+
+        // Toggle availability gaps view handler
+        function toggleGapsView() {
+            showGapsOnly = !showGapsOnly;
+            const btn = document.getElementById('btn-toggle-gaps');
+
+            if (showGapsOnly) {
+                btn.className = "w-full py-2.5 px-4 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 border border-indigo-200 bg-indigo-600 text-white shadow-md";
+                btn.innerHTML = `<i class="fa-solid fa-clock-rotate-left"></i> <span>Ver Clases Asignadas</span>`;
+
+                // Update text instructions to make it very clear
+                document.getElementById('calendar-header-title').innerText = "Horarios Libres / Huecos Disponibles";
+                document.getElementById('calendar-header-desc').innerText = "El calendario ahora destaca las ventanas de tiempo en las que el facilitador NO tiene ninguna clase asignada.";
+                document.getElementById('weekly-header-title').innerText = "Matriz de Huecos y Horarios Disponibles";
+                document.getElementById('weekly-header-desc').innerText = "Destacando en verde brillante los bloques semanales totalmente disponibles.";
+            } else {
+                btn.className = "w-full py-2.5 px-4 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 border border-emerald-200 bg-emerald-50 text-emerald-800 hover:bg-emerald-100/70 shadow-sm";
+                btn.innerHTML = `<i class="fa-solid fa-clock-rotate-left"></i> <span>Ver Horarios Disponibles (Huecos)</span>`;
+
+                document.getElementById('calendar-header-title').innerText = "Agenda Mensual / Diaria";
+                document.getElementById('calendar-header-desc').innerText = "Visualiza exactamente los días asignados y haz clic en un evento para detalles completos.";
+                document.getElementById('weekly-header-title').innerText = "Matriz de Horas Semanales";
+                document.getElementById('weekly-header-desc').innerText = "Representación consolidada de los bloques horarios recurrentes por día de la semana.";
+            }
+
+            updateAllViews();
+        }
 
         function populateFacilitators() {
             const selector = document.getElementById('facilitator-selector');
@@ -696,25 +752,91 @@
 
                             const colorConfig = modalityColors[sched.modality] || { border: '#4f46e5', bg: 'rgba(79, 70, 229, 0.1)', text: '#4f46e5' };
 
-                            events.push({
-                                title: `${sched.materia === 'N/A' ? course.salida : sched.materia} (${sched.modality})`,
-                                start: `${dateStr}T${startTime}:00`,
-                                end: `${dateStr}T${endTime}:00`,
-                                color: colorConfig.border,
-                                textColor: colorConfig.border,
-                                backgroundColor: colorConfig.bg,
-                                borderColor: colorConfig.border,
-                                extendedProps: {
-                                    course: course,
-                                    schedule: sched,
-                                    dayName: dayName,
-                                    timeRange: timeRange
-                                }
-                            });
+                            if (!showGapsOnly) {
+                                events.push({
+                                    title: `${sched.materia === 'N/A' ? course.salida : sched.materia} (${sched.modality})`,
+                                    start: `${dateStr}T${startTime}:00`,
+                                    end: `${dateStr}T${endTime}:00`,
+                                    color: colorConfig.border,
+                                    textColor: colorConfig.border,
+                                    backgroundColor: colorConfig.bg,
+                                    borderColor: colorConfig.border,
+                                    extendedProps: {
+                                        course: course,
+                                        schedule: sched,
+                                        dayName: dayName,
+                                        timeRange: timeRange
+                                    }
+                                });
+                            }
                         }
                     }
                 });
             });
+
+            // Generate "Gaps/Free slots" events to render on calendar if showGapsOnly is active
+            if (showGapsOnly && filtered.length > 0) {
+                // Find start and end date range of the current active facilitator schedules dynamically
+                let { minDate, maxDate } = getFacilitatorDateBounds(filtered);
+
+                if (!minDate || !maxDate) {
+                    minDate = new Date('2026-03-01T00:00:00');
+                    maxDate = new Date('2026-10-31T23:59:59');
+                }
+
+                // Day loops: build daily blocks of free times
+                const standardBlocks = [
+                    { start: '07:00', end: '08:00' },
+                    { start: '08:00', end: '13:00' },
+                    { start: '13:00', end: '14:00' },
+                    { start: '14:00', end: '19:00' },
+                    { start: '20:00', end: '22:00' }
+                ];
+
+                for (let d = new Date(minDate); d <= maxDate; d.setDate(d.getDate() + 1)) {
+                    const dayName = weekdayIndexMap[d.getDay()];
+
+                    standardBlocks.forEach(block => {
+                        let isOccupied = false;
+
+                        filtered.forEach(course => {
+                            course.schedules.forEach(sched => {
+                                if (sched.days[dayName]) {
+                                    // Parse range
+                                    const [sTime, eTime] = sched.days[dayName].split('-');
+                                    // Check if class spans on this date
+                                    const schedStart = new Date(parseToIso(sched.start_date) + 'T00:00:00');
+                                    const schedEnd = new Date(parseToIso(sched.end_date) + 'T23:59:59');
+                                    if (d >= schedStart && d <= schedEnd) {
+                                        if (sTime === block.start && eTime === block.end) {
+                                            isOccupied = true;
+                                        }
+                                    }
+                                }
+                            });
+                        });
+
+                        if (!isOccupied) {
+                            // Free slot! Add to calendar events
+                            const yr = d.getFullYear();
+                            const mo = String(d.getMonth() + 1).padStart(2, '0');
+                            const dy = String(d.getDate()).padStart(2, '0');
+                            const dateStr = `${yr}-${mo}-${dy}`;
+
+                            events.push({
+                                title: `Disponible (${block.start}-${block.end})`,
+                                start: `${dateStr}T${block.start}:00`,
+                                end: `${dateStr}T${block.end}:00`,
+                                color: '#10b981',
+                                textColor: '#047857',
+                                backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                                borderColor: '#10b981',
+                                extendedProps: { isGap: true }
+                            });
+                        }
+                    });
+                }
+            }
 
             return events;
         }
@@ -722,12 +844,23 @@
         function initCalendar() {
             const calendarEl = document.getElementById('calendar');
 
-            // Destroy existing instance to cleanly reload with different events/views
             if (calendarInstance) {
                 calendarInstance.destroy();
             }
 
             const events = getCalendarEvents();
+
+            // Set dynamic initial calendar date based on facilitator schedule start date
+            let initialDateStr = '2026-03-01';
+            if (currentFacilitator && currentFacilitator.courses.length > 0) {
+                const { minDate } = getFacilitatorDateBounds(currentFacilitator.courses);
+                if (minDate) {
+                    const yr = minDate.getFullYear();
+                    const mo = String(minDate.getMonth() + 1).padStart(2, '0');
+                    const dy = String(minDate.getDate()).padStart(2, '0');
+                    initialDateStr = `${yr}-${mo}-${dy}`;
+                }
+            }
 
             calendarInstance = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
@@ -737,9 +870,10 @@
                     center: 'title',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay'
                 },
-                initialDate: '2026-03-01',
+                initialDate: initialDateStr,
                 events: events,
                 eventClick: function(info) {
+                    if (info.event.extendedProps.isGap) return; // ignore gap clicks
                     showEventModal(info.event);
                 },
                 eventTimeFormat: {
@@ -856,45 +990,60 @@
                         });
                     });
 
-                    if (matches.length > 0) {
-                        const cellWrapper = document.createElement('div');
-                        cellWrapper.className = 'space-y-1';
-
-                        matches.forEach(match => {
-                            const mod = match.sched.modality;
-                            const colors = modalityColors[mod] || { border: '#4f46e5', bg: 'rgba(79, 70, 229, 0.1)' };
-
-                            const chip = document.createElement('div');
-                            chip.className = 'heatmap-cell rounded px-2 py-1 border text-[10px] font-semibold cursor-pointer shadow-sm transition';
-                            chip.style.borderColor = colors.border;
-                            chip.style.backgroundColor = colors.bg;
-                            chip.style.color = colors.border;
-
-                            const label = match.sched.materia === 'N/A' ? match.course.salida : match.sched.materia;
-                            chip.innerHTML = `
-                                <div class="font-bold truncate text-[11px]">${label}</div>
-                                <div class="flex items-center justify-between text-[9px] opacity-80 mt-0.5 font-mono">
-                                    <span>${match.course.code}</span>
-                                    <span>${mod}</span>
+                    if (showGapsOnly) {
+                        // User wants to see free schedules (gaps) highlighted in green
+                        if (matches.length === 0) {
+                            tdDay.className = "p-3 text-xs border-r border-slate-100 relative min-w-[120px] bg-emerald-50/50";
+                            tdDay.innerHTML = `
+                                <div class="rounded px-2.5 py-1.5 border border-emerald-300 bg-emerald-50 text-emerald-800 text-[10px] font-bold shadow-sm flex items-center gap-1">
+                                    <i class="fa-solid fa-circle-check text-emerald-600"></i> Disponible
                                 </div>
                             `;
-
-                            chip.onclick = () => {
-                                const fakeEvent = {
-                                    extendedProps: {
-                                        course: match.course,
-                                        schedule: match.sched
-                                    }
-                                };
-                                showEventModal(fakeEvent);
-                            };
-
-                            cellWrapper.appendChild(chip);
-                        });
-
-                        tdDay.appendChild(cellWrapper);
+                        } else {
+                            tdDay.innerHTML = '<span class="text-slate-400 italic text-[10px] block text-center py-2">Ocupado</span>';
+                        }
                     } else {
-                        tdDay.innerHTML = '<span class="text-slate-300 italic text-[10px] block text-center py-2">Disponible</span>';
+                        // Standard assignment rendering
+                        if (matches.length > 0) {
+                            const cellWrapper = document.createElement('div');
+                            cellWrapper.className = 'space-y-1';
+
+                            matches.forEach(match => {
+                                const mod = match.sched.modality;
+                                const colors = modalityColors[mod] || { border: '#4f46e5', bg: 'rgba(79, 70, 229, 0.1)' };
+
+                                const chip = document.createElement('div');
+                                chip.className = 'heatmap-cell rounded px-2 py-1 border text-[10px] font-semibold cursor-pointer shadow-sm transition';
+                                chip.style.borderColor = colors.border;
+                                chip.style.backgroundColor = colors.bg;
+                                chip.style.color = colors.border;
+
+                                const label = match.sched.materia === 'N/A' ? match.course.salida : match.sched.materia;
+                                chip.innerHTML = `
+                                    <div class="font-bold truncate text-[11px]">${label}</div>
+                                    <div class="flex items-center justify-between text-[9px] opacity-80 mt-0.5 font-mono">
+                                        <span>${match.course.code}</span>
+                                        <span>${mod}</span>
+                                    </div>
+                                `;
+
+                                chip.onclick = () => {
+                                    const fakeEvent = {
+                                        extendedProps: {
+                                            course: match.course,
+                                            schedule: match.sched
+                                        }
+                                    };
+                                    showEventModal(fakeEvent);
+                                };
+
+                                cellWrapper.appendChild(chip);
+                            });
+
+                            tdDay.appendChild(cellWrapper);
+                        } else {
+                            tdDay.innerHTML = '<span class="text-slate-300 italic text-[10px] block text-center py-2">Disponible</span>';
+                        }
                     }
 
                     tr.appendChild(tdDay);
