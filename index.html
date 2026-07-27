@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disponibilidad de Facilitadores - Ruth Uceta</title>
+    <title>Disponibilidad de Facilitadores - INFOTEP</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -50,18 +50,18 @@
                     <i class="fa-solid fa-calendar-days text-2xl text-amber-300"></i>
                 </div>
                 <div>
-                    <h1 id="facilitator-name-header" class="text-xl md:text-2xl font-bold tracking-tight">Ruth Uceta</h1>
+                    <h1 id="facilitator-name-header" class="text-xl md:text-2xl font-bold tracking-tight">Cargando Facilitador...</h1>
                     <p class="text-xs text-indigo-100 flex items-center gap-1 mt-0.5">
-                        <i class="fa-solid fa-id-card"></i> Doc: <span id="facilitator-doc-header">402-2306995-2</span> |
+                        <i class="fa-solid fa-id-card"></i> Doc: <span id="facilitator-doc-header">--</span> |
                         <span class="bg-indigo-700 px-1.5 py-0.5 rounded text-[10px] font-semibold text-white">FACILITADOR ACTIVO</span>
                     </p>
                 </div>
             </div>
 
             <div class="flex items-center gap-2">
-                <a href="Horario Ruth Uceta.pdf" target="_blank" class="inline-flex items-center gap-2 bg-indigo-700 hover:bg-indigo-800 transition text-white px-4 py-2 rounded-lg text-sm font-semibold shadow">
-                    <i class="fa-solid fa-file-pdf text-red-400"></i>
-                    Ver PDF Original
+                <a href="horarios/" target="_blank" class="inline-flex items-center gap-2 bg-indigo-700 hover:bg-indigo-800 transition text-white px-4 py-2 rounded-lg text-sm font-semibold shadow">
+                    <i class="fa-solid fa-folder-open text-amber-300"></i>
+                    Ver Carpeta de Horarios
                 </a>
             </div>
         </div>
@@ -70,8 +70,30 @@
     <!-- Main Content Area with Sidebar and Main Panels -->
     <div class="max-w-7xl mx-auto w-full flex-1 px-4 py-6 md:py-8 flex flex-col gap-6 overflow-y-auto">
 
+        <!-- Facilitator Selection / Search Bar -->
+        <section class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4 shrink-0">
+            <div class="space-y-1">
+                <h3 class="font-bold text-slate-900 flex items-center gap-2 text-base md:text-lg">
+                    <i class="fa-solid fa-user-tie text-indigo-500"></i>
+                    Selección de Facilitador
+                </h3>
+                <p class="text-xs text-slate-400">Busca o selecciona un facilitador de la lista para cargar su disponibilidad completa.</p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                <div class="relative flex-1 sm:w-80">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
+                    </span>
+                    <input type="text" id="facilitator-search" oninput="filterFacilitators()" placeholder="Buscar facilitador por nombre..." class="w-full pl-9 pr-4 py-2 rounded-lg border border-slate-200 bg-slate-50 text-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none">
+                </div>
+                <select id="facilitator-selector" onchange="onFacilitatorChange()" class="rounded-lg border-slate-200 bg-slate-50 py-2 px-3 text-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none border font-semibold text-slate-700">
+                    <!-- Dynamic facilitator options -->
+                </select>
+            </div>
+        </section>
+
         <!-- KPI Row -->
-        <section class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <section class="grid grid-cols-2 lg:grid-cols-4 gap-4 shrink-0">
             <!-- Metric 1: Total Courses -->
             <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-4">
                 <div class="bg-indigo-50 text-indigo-600 p-3.5 rounded-xl">
@@ -79,7 +101,7 @@
                 </div>
                 <div>
                     <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Cursos / Códigos</p>
-                    <p id="kpi-total-courses" class="text-2xl font-bold mt-0.5">7</p>
+                    <p id="kpi-total-courses" class="text-2xl font-bold mt-0.5">--</p>
                 </div>
             </div>
 
@@ -90,7 +112,7 @@
                 </div>
                 <div>
                     <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Horas Asignadas</p>
-                    <p id="kpi-total-hours" class="text-2xl font-bold mt-0.5">--</p>
+                    <p id="kpi-total-hours" class="text-2xl font-bold mt-0.5 font-mono">--</p>
                 </div>
             </div>
 
@@ -100,8 +122,8 @@
                     <i class="fa-solid fa-calendar-range text-2xl"></i>
                 </div>
                 <div>
-                    <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider font-sans">Periodo Lectivo</p>
-                    <p id="kpi-date-range" class="text-sm font-bold mt-1 text-slate-700">Mar - Oct 2026</p>
+                    <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Periodo Lectivo</p>
+                    <p id="kpi-date-range" class="text-sm font-bold mt-1 text-slate-700">--</p>
                 </div>
             </div>
 
@@ -162,7 +184,7 @@
                 <!-- Course Code Filter -->
                 <div class="space-y-2">
                     <label for="filter-course-code" class="block text-xs font-bold uppercase tracking-wider text-slate-500">Código de Acción/Curso</label>
-                    <select id="filter-course-code" class="w-full rounded-lg border-slate-200 bg-slate-50 py-2 px-3 text-sm focus:border-indigo-500 focus:ring-indigo-500 border">
+                    <select id="filter-course-code" class="w-full rounded-lg border-slate-200 bg-slate-50 py-2 px-3 text-sm focus:border-indigo-500 focus:ring-indigo-500 border focus:outline-none">
                         <option value="ALL">Todos los códigos</option>
                         <!-- Dynamic options -->
                     </select>
@@ -171,7 +193,7 @@
                 <!-- Subjects Filter -->
                 <div class="space-y-2">
                     <label for="filter-materia" class="block text-xs font-bold uppercase tracking-wider text-slate-500">Materia o Módulo</label>
-                    <select id="filter-materia" class="w-full rounded-lg border-slate-200 bg-slate-50 py-2 px-3 text-sm focus:border-indigo-500 focus:ring-indigo-500 border">
+                    <select id="filter-materia" class="w-full rounded-lg border-slate-200 bg-slate-50 py-2 px-3 text-sm focus:border-indigo-500 focus:ring-indigo-500 border focus:outline-none">
                         <option value="ALL">Todas las materias</option>
                         <!-- Dynamic options -->
                     </select>
@@ -389,6 +411,7 @@
         const DAYS_ORDER = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
         let calendarInstance = null;
         let activeTab = 'calendar';
+        let currentFacilitator = null;
 
         // Helper to convert date DD/MM/YYYY to ISO YYYY-MM-DD
         function parseToIso(dateStr) {
@@ -396,17 +419,6 @@
             if (parts.length !== 3) return null;
             return `${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`;
         }
-
-        // Helper to map weekday names from Spanish to numeric (0 Sunday, 1 Monday, etc.)
-        const weekdayMap = {
-            'Lunes': 1,
-            'Martes': 2,
-            'Miércoles': 3,
-            'Jueves': 4,
-            'Viernes': 5,
-            'Sábado': 6,
-            'Domingo': 0
-        };
 
         const weekdayIndexMap = {
             1: 'Lunes',
@@ -444,22 +456,14 @@
             });
 
             if (tabId === 'calendar' && calendarInstance) {
-                // Relayout calendar in case it was hidden
                 calendarInstance.updateSize();
             }
         }
 
         // Main loader and state
         document.addEventListener('DOMContentLoaded', function() {
-            // Update Facilitator Profile details
-            document.getElementById('facilitator-name-header').innerText = SCHEDULE_DATA.facilitator_name;
-            document.getElementById('facilitator-doc-header').innerText = SCHEDULE_DATA.facilitator_doc;
-
-            // Populate filters
-            populateFilters();
-
-            // Build KPIs
-            calculateKPIs();
+            // Populate Facilitator selector
+            populateFacilitators();
 
             // Setup listeners for filters
             document.getElementById('filter-modal-presencial').addEventListener('change', updateAllViews);
@@ -468,22 +472,82 @@
             document.getElementById('filter-course-code').addEventListener('change', updateAllViews);
             document.getElementById('filter-materia').addEventListener('change', updateAllViews);
 
-            // Initialize views
-            initCalendar();
-            renderHeatmap();
-            renderGantt();
-            renderCourseListTable();
-            checkAndRenderOverlaps();
+            // Initialize views on first facilitator
+            if (SCHEDULE_DATABASE.facilitators.length > 0) {
+                loadFacilitator(SCHEDULE_DATABASE.facilitators[0]);
+            }
         });
 
-        function populateFilters() {
+        function populateFacilitators() {
+            const selector = document.getElementById('facilitator-selector');
+            selector.innerHTML = '';
+
+            SCHEDULE_DATABASE.facilitators.forEach((fac, idx) => {
+                const opt = document.createElement('option');
+                opt.value = idx;
+                opt.innerText = fac.facilitator_name;
+                selector.appendChild(opt);
+            });
+        }
+
+        function filterFacilitators() {
+            const searchVal = document.getElementById('facilitator-search').value.toLowerCase().trim();
+            const selector = document.getElementById('facilitator-selector');
+            selector.innerHTML = '';
+
+            SCHEDULE_DATABASE.facilitators.forEach((fac, idx) => {
+                if (fac.facilitator_name.toLowerCase().includes(searchVal)) {
+                    const opt = document.createElement('option');
+                    opt.value = idx;
+                    opt.innerText = fac.facilitator_name;
+                    selector.appendChild(opt);
+                }
+            });
+
+            // Trigger load if matches are found
+            if (selector.options.length > 0) {
+                onFacilitatorChange();
+            }
+        }
+
+        function onFacilitatorChange() {
+            const idx = document.getElementById('facilitator-selector').value;
+            if (idx !== "") {
+                loadFacilitator(SCHEDULE_DATABASE.facilitators[idx]);
+            }
+        }
+
+        function loadFacilitator(fac) {
+            currentFacilitator = fac;
+
+            // Update Facilitator Profile details
+            document.getElementById('facilitator-name-header').innerText = fac.facilitator_name;
+            document.getElementById('facilitator-doc-header').innerText = fac.facilitator_doc;
+
+            // Reset specific filters and populate with new items
+            populateFilters(fac);
+
+            // Build KPIs
+            calculateKPIs(fac);
+
+            // Initialize or reload calendar
+            initCalendar();
+
+            // Update all views
+            updateAllViews();
+        }
+
+        function populateFilters(fac) {
             const selectCode = document.getElementById('filter-course-code');
             const selectMateria = document.getElementById('filter-materia');
+
+            selectCode.innerHTML = '<option value="ALL">Todos los códigos</option>';
+            selectMateria.innerHTML = '<option value="ALL">Todas las materias</option>';
 
             const codesSet = new Set();
             const materiasSet = new Set();
 
-            SCHEDULE_DATA.courses.forEach(course => {
+            fac.courses.forEach(course => {
                 if (course.code) codesSet.add(course.code);
                 course.schedules.forEach(sched => {
                     if (sched.materia) materiasSet.add(sched.materia);
@@ -507,7 +571,7 @@
             });
         }
 
-        function calculateKPIs() {
+        function calculateKPIs(fac) {
             let totalHours = 0;
             const modalities = new Set();
             const uniqueCourses = new Set();
@@ -515,7 +579,7 @@
             let minDate = null;
             let maxDate = null;
 
-            SCHEDULE_DATA.courses.forEach(course => {
+            fac.courses.forEach(course => {
                 uniqueCourses.add(course.code);
                 course.schedules.forEach(sched => {
                     if (sched.hours) totalHours += parseInt(sched.hours) || 0;
@@ -557,6 +621,8 @@
         }
 
         function getFilteredData() {
+            if (!currentFacilitator) return [];
+
             const presChecked = document.getElementById('filter-modal-presencial').checked;
             const virtChecked = document.getElementById('filter-modal-virtual').checked;
             const semiChecked = document.getElementById('filter-modal-semi').checked;
@@ -565,19 +631,16 @@
 
             const filteredCourses = [];
 
-            SCHEDULE_DATA.courses.forEach(course => {
-                // Filter course code
+            currentFacilitator.courses.forEach(course => {
                 if (selectedCode !== 'ALL' && course.code !== selectedCode) return;
 
                 const filteredSchedules = [];
 
                 course.schedules.forEach(sched => {
-                    // Filter modality
                     if (sched.modality === 'Presencial' && !presChecked) return;
                     if (sched.modality === 'Virtual' && !virtChecked) return;
                     if (sched.modality === 'Semipresencial' && !semiChecked) return;
 
-                    // Filter materia
                     if (selectedMateria !== 'ALL' && sched.materia !== selectedMateria) return;
 
                     filteredSchedules.push(sched);
@@ -595,7 +658,6 @@
         }
 
         function updateAllViews() {
-            // Re-render calendar
             if (calendarInstance) {
                 const events = getCalendarEvents();
                 calendarInstance.removeAllEvents();
@@ -618,18 +680,15 @@
                     const endIso = parseToIso(sched.end_date);
                     if (!startIso || !endIso) return;
 
-                    // Generate a list of days on which this class runs between start and end date
                     const startD = new Date(startIso + 'T00:00:00');
                     const endD = new Date(endIso + 'T00:00:00');
 
                     for (let d = new Date(startD); d <= endD; d.setDate(d.getDate() + 1)) {
                         const dayName = weekdayIndexMap[d.getDay()];
                         if (sched.days[dayName]) {
-                            // Class happens on this weekday!
                             const timeRange = sched.days[dayName];
                             const [startTime, endTime] = timeRange.split('-');
 
-                            // Form date string YYYY-MM-DD
                             const yr = d.getFullYear();
                             const mo = String(d.getMonth() + 1).padStart(2, '0');
                             const dy = String(d.getDate()).padStart(2, '0');
@@ -662,6 +721,12 @@
 
         function initCalendar() {
             const calendarEl = document.getElementById('calendar');
+
+            // Destroy existing instance to cleanly reload with different events/views
+            if (calendarInstance) {
+                calendarInstance.destroy();
+            }
+
             const events = getCalendarEvents();
 
             calendarInstance = new FullCalendar.Calendar(calendarEl, {
@@ -672,7 +737,7 @@
                     center: 'title',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay'
                 },
-                initialDate: '2026-03-01', // Set to when courses begin
+                initialDate: '2026-03-01',
                 events: events,
                 eventClick: function(info) {
                     showEventModal(info.event);
@@ -769,25 +834,21 @@
                 const tr = document.createElement('tr');
                 tr.className = 'hover:bg-slate-50 transition border-b border-slate-100';
 
-                // Hour range label
                 const tdHour = document.createElement('td');
                 tdHour.className = 'p-3 text-xs md:text-sm font-semibold text-slate-700 bg-slate-50 border-r border-slate-100 font-mono';
                 tdHour.innerHTML = `<i class="fa-regular fa-clock text-indigo-400 mr-1.5"></i> ${block.start} - ${block.end}`;
                 tr.appendChild(tdHour);
 
-                // Build each day
                 DAYS_ORDER.forEach(day => {
                     const tdDay = document.createElement('td');
                     tdDay.className = 'p-3 text-xs border-r border-slate-100 relative min-w-[120px]';
 
-                    // Check which schedules match this day and block
                     const matches = [];
                     filtered.forEach(course => {
                         course.schedules.forEach(sched => {
                             if (sched.days[day]) {
                                 const range = sched.days[day];
                                 const [sTime, eTime] = range.split('-');
-                                // Check for exact or overlapping matches
                                 if (sTime === block.start && eTime === block.end) {
                                     matches.push({ course, sched });
                                 }
@@ -818,7 +879,6 @@
                                 </div>
                             `;
 
-                            // OnClick handler to show event modal
                             chip.onclick = () => {
                                 const fakeEvent = {
                                     extendedProps: {
@@ -855,7 +915,6 @@
                 return;
             }
 
-            // Find absolute boundaries
             let minD = null;
             let maxD = null;
 
@@ -874,27 +933,12 @@
 
             if (!minD || !maxD) return;
 
-            // Pad min and max dates a bit
-            minD = new Date(minD.setDate(1)); // Start at 1st of month
+            minD = new Date(minD.setDate(1));
             maxD = new Date(maxD.setMonth(maxD.getMonth() + 1));
-            maxD = new Date(maxD.setDate(0)); // End of that month
+            maxD = new Date(maxD.setDate(0));
 
             const totalSpanDays = (maxD - minD) / (1000 * 60 * 60 * 24);
 
-            // Print months header
-            const monthsHeader = document.createElement('div');
-            monthsHeader.className = 'grid grid-cols-12 text-center text-xs font-bold text-slate-500 border-b border-slate-100 pb-2';
-
-            // Generate visual columns of months
-            const tempD = new Date(minD);
-            const monthsList = [];
-            while (tempD <= maxD) {
-                const mName = tempD.toLocaleDateString('es-ES', { month: 'short', year: '2-digit' });
-                monthsList.push(mName);
-                tempD.setMonth(tempD.getMonth() + 1);
-            }
-
-            // Render timelines
             filtered.forEach(course => {
                 course.schedules.forEach(sched => {
                     const sIso = parseToIso(sched.start_date);
@@ -979,23 +1023,21 @@
 
         // Overlap Detection and Alerts
         function checkAndRenderOverlaps() {
-            const courses = SCHEDULE_DATA.courses;
+            if (!currentFacilitator) return;
+
+            const courses = currentFacilitator.courses;
             const overlaps = [];
 
-            // A helper to parse date strings DD/MM/YYYY to JS Date objects
             function toDate(str) {
                 const [d, m, y] = str.split('/').map(Number);
                 return new Date(y, m - 1, d);
             }
 
-            // Convert time 'HH:MM' to decimal minutes for overlap math
             function toMinutes(timeStr) {
                 const [h, m] = timeStr.split(':').map(Number);
                 return h * 60 + m;
             }
 
-            // Find overlapping intervals
-            // For every schedule, see if there is another schedule that overlaps in date span, shares a weekday, and overlaps in hours
             const allItems = [];
             courses.forEach(c => {
                 c.schedules.forEach(s => {
@@ -1013,17 +1055,13 @@
                     const start2 = toDate(item2.schedule.start_date);
                     const end2 = toDate(item2.schedule.end_date);
 
-                    // Check if date intervals overlap
                     if (start1 <= end2 && start2 <= end1) {
-                        // Yes, date ranges overlap. Now check if they share any weekday with overlapping hours
                         for (const day of DAYS_ORDER) {
                             if (item1.schedule.days[day] && item2.schedule.days[day]) {
-                                // Both classes run on this day! Check time overlap
                                 const [s1, e1] = item1.schedule.days[day].split('-').map(toMinutes);
                                 const [s2, e2] = item2.schedule.days[day].split('-').map(toMinutes);
 
                                 if (s1 < e2 && s2 < e1) {
-                                    // Time overlaps!
                                     const label1 = item1.schedule.materia === 'N/A' ? item1.course.salida : item1.schedule.materia;
                                     const label2 = item2.schedule.materia === 'N/A' ? item2.course.salida : item2.schedule.materia;
 
@@ -1051,7 +1089,6 @@
             if (overlaps.length > 0) {
                 alertContainer.classList.remove('hidden');
 
-                // Deduplicate warnings
                 const uniqueWarnings = new Set();
                 overlaps.forEach(o => {
                     const warnText = `<b>${o.day}</b> de <b>${o.dates}</b>: El curso "${o.materia1}" (Acción: ${o.code1}) en horario <b>${o.time1}</b> colisiona con "${o.materia2}" (Acción: ${o.code2}) en horario <b>${o.time2}</b>.`;

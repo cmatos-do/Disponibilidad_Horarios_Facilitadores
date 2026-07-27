@@ -1,6 +1,7 @@
 import pypdf
 import re
 import json
+import os
 
 X_COLUMNS = {
     16.42: 'materia',
@@ -30,50 +31,65 @@ def get_column_by_x(x):
             best_col = col_name
     return best_col
 
-def extract_rows_from_all_pages(pdf_path):
-    reader = pypdf.PdfReader(pdf_path)
-    all_rows = []
-
-    facilitator_name = "RUTH ADIBELL UCETA PACHECO"
-    facilitator_doc = "402-2306995-2"
-
-    for p_idx, page in enumerate(reader.pages):
-        elements = []
-        def visitor(text, cm, tm, fontDict, fontSize):
-            t = text.strip()
-            if t:
-                elements.append({
-                    'text': t,
-                    'x': tm[4],
-                    'y': tm[5],
-                    'h': fontSize
-                })
-        page.extract_text(visitor_text=visitor)
-
-        rows_dict = {}
-        for el in elements:
-            found = False
-            for y_key in rows_dict:
-                if abs(el['y'] - y_key) < 4.0:
-                    rows_dict[y_key].append(el)
-                    found = True
-                    break
-            if not found:
-                rows_dict[el['y']] = [el]
-
-        sorted_ys = sorted(rows_dict.keys(), reverse=True)
-        for y in sorted_ys:
-            row_items = sorted(rows_dict[y], key=lambda e: e['x'])
-            all_rows.append({
-                'page': p_idx + 1,
-                'y': y,
-                'items': row_items
+def extract_rows_from_page(page, p_idx):
+    elements = []
+    def visitor(text, cm, tm, fontDict, fontSize):
+        t = text.strip()
+        if t:
+            elements.append({
+                'text': t,
+                'x': tm[4],
+                'y': tm[5],
+                'h': fontSize
             })
+    page.extract_text(visitor_text=visitor)
 
-    return facilitator_name, facilitator_doc, all_rows
+    rows_dict = {}
+    for el in elements:
+        found = False
+        for y_key in rows_dict:
+            if abs(el['y'] - y_key) < 4.0:
+                rows_dict[y_key].append(el)
+                found = True
+                break
+        if not found:
+            rows_dict[el['y']] = [el]
 
-def parse_schedule(pdf_path):
-    fac_name, fac_doc, rows = extract_rows_from_all_pages(pdf_path)
+    sorted_ys = sorted(rows_dict.keys(), reverse=True)
+    page_rows = []
+    for y in sorted_ys:
+        row_items = sorted(rows_dict[y], key=lambda e: e['x'])
+        page_rows.append({
+            'page': p_idx + 1,
+            'y': y,
+            'items': row_items
+        })
+    return page_rows
+
+def parse_single_pdf(pdf_path):
+    reader = pypdf.PdfReader(pdf_path)
+
+    # Extract general Facilitator name and document
+    # Search first few pages for Name and Doc
+    facilitator_name = "Desconocido"
+    facilitator_doc = "Desconocido"
+
+    all_text = ""
+    for page in reader.pages:
+        all_text += page.extract_text() + "\n"
+
+    doc_match = re.search(r'Documento:\s*([\d-]+)', all_text)
+    name_match = re.search(r'Nombre:\s*(.*?)\s*Código:', all_text, re.DOTALL)
+
+    if doc_match:
+        facilitator_doc = doc_match.group(1).strip()
+    if name_match:
+        facilitator_name = name_match.group(1).strip().replace('\n', ' ')
+
+    # Extract page elements
+    rows = []
+    for p_idx, page in enumerate(reader.pages):
+        rows.extend(extract_rows_from_page(page, p_idx))
 
     courses = []
     current_course = None
@@ -131,7 +147,6 @@ def parse_schedule(pdf_path):
             modalidad = " ".join(modalidad_parts).strip()
             regional = " ".join(regional_parts).strip()
 
-            # clean duplicates or wraps
             salida = re.sub(r'\s+', ' ', salida)
             modalidad = re.sub(r'\s+', ' ', modalidad)
             regional = re.sub(r'\s+', ' ', regional)
@@ -185,22 +200,42 @@ def parse_schedule(pdf_path):
         i += 1
 
     return {
-        'facilitator_name': fac_name,
-        'facilitator_doc': fac_doc,
+        'facilitator_name': facilitator_name,
+        'facilitator_doc': facilitator_doc,
         'courses': [c for c in courses if c['code'] and c['schedules']]
     }
 
-if __name__ == '__main__':
-    parsed_data = parse_schedule('Horario Ruth Uceta.pdf')
+def main():
+    horarios_dir = 'horarios'
+    facilitators_list = []
+
+    if os.path.exists(horarios_dir):
+        files = [f for f in os.listdir(horarios_dir) if f.lower().endswith('.pdf')]
+        print(f"Found PDF files: {files}")
+        for filename in files:
+            pdf_path = os.path.join(horarios_dir, filename)
+            try:
+                data = parse_single_pdf(pdf_path)
+                facilitators_list.append(data)
+                print(f"Successfully parsed {filename} ({data['facilitator_name']})")
+            except Exception as e:
+                print(f"Error parsing {filename}: {e}")
+
+    output_schema = {
+        'facilitators': facilitators_list
+    }
 
     # Save as JSON
     with open('data.json', 'w', encoding='utf-8') as f:
-        json.dump(parsed_data, f, indent=2, ensure_ascii=False)
+        json.dump(output_schema, f, indent=2, ensure_ascii=False)
 
     # Save as JS for client side
     with open('data.js', 'w', encoding='utf-8') as f:
-        f.write('const SCHEDULE_DATA = ')
-        json.dump(parsed_data, f, indent=2, ensure_ascii=False)
+        f.write('const SCHEDULE_DATABASE = ')
+        json.dump(output_schema, f, indent=2, ensure_ascii=False)
         f.write(';\n')
 
-    print('Successfully parsed and generated data.json and data.js!')
+    print('Multi-facilitator database saved successfully!')
+
+if __name__ == '__main__':
+    main()
