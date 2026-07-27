@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disponibilidad de Facilitadores - Ruth Uceta</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FullCalendar CSS and JS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/locales/es.global.min.js"></script>
+
+    <!-- FontAwesome for beautiful icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .heatmap-cell {
+            transition: all 0.2s ease-in-out;
+        }
+        .heatmap-cell:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="h-full flex flex-col font-sans text-slate-800">
+
+    <!-- Header / Navbar -->
+    <header class="bg-indigo-600 text-white shadow-md py-4 px-6 shrink-0">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-white/10 p-2.5 rounded-lg">
+                    <i class="fa-solid fa-calendar-days text-2xl text-amber-300"></i>
+                </div>
+                <div>
+                    <h1 id="facilitator-name-header" class="text-xl md:text-2xl font-bold tracking-tight">Ruth Uceta</h1>
+                    <p class="text-xs text-indigo-100 flex items-center gap-1 mt-0.5">
+                        <i class="fa-solid fa-id-card"></i> Doc: <span id="facilitator-doc-header">402-2306995-2</span> |
+                        <span class="bg-indigo-700 px-1.5 py-0.5 rounded text-[10px] font-semibold text-white">FACILITADOR ACTIVO</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <a href="Horario Ruth Uceta.pdf" target="_blank" class="inline-flex items-center gap-2 bg-indigo-700 hover:bg-indigo-800 transition text-white px-4 py-2 rounded-lg text-sm font-semibold shadow">
+                    <i class="fa-solid fa-file-pdf text-red-400"></i>
+                    Ver PDF Original
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area with Sidebar and Main Panels -->
+    <div class="max-w-7xl mx-auto w-full flex-1 px-4 py-6 md:py-8 flex flex-col gap-6 overflow-y-auto">
+
+        <!-- KPI Row -->
+        <section class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Metric 1: Total Courses -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-4">
+                <div class="bg-indigo-50 text-indigo-600 p-3.5 rounded-xl">
+                    <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                </div>
+                <div>
+                    <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Cursos / Códigos</p>
+                    <p id="kpi-total-courses" class="text-2xl font-bold mt-0.5">7</p>
+                </div>
+            </div>
+
+            <!-- Metric 2: Total Hours -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-4">
+                <div class="bg-emerald-50 text-emerald-600 p-3.5 rounded-xl">
+                    <i class="fa-solid fa-clock text-2xl"></i>
+                </div>
+                <div>
+                    <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Horas Asignadas</p>
+                    <p id="kpi-total-hours" class="text-2xl font-bold mt-0.5">--</p>
+                </div>
+            </div>
+
+            <!-- Metric 3: Date Span -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-4">
+                <div class="bg-sky-50 text-sky-600 p-3.5 rounded-xl">
+                    <i class="fa-solid fa-calendar-range text-2xl"></i>
+                </div>
+                <div>
+                    <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider font-sans">Periodo Lectivo</p>
+                    <p id="kpi-date-range" class="text-sm font-bold mt-1 text-slate-700">Mar - Oct 2026</p>
+                </div>
+            </div>
+
+            <!-- Metric 4: Modality Mix -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-4">
+                <div class="bg-amber-50 text-amber-600 p-3.5 rounded-xl">
+                    <i class="fa-solid fa-laptop-house text-2xl"></i>
+                </div>
+                <div>
+                    <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Modalidades</p>
+                    <div id="kpi-modalities-pills" class="flex flex-wrap gap-1 mt-1 text-[11px] font-semibold">
+                        <!-- Pills go here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filters and Visualizations Grid -->
+        <main class="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
+
+            <!-- Sidebar Filters -->
+            <aside class="lg:col-span-1 bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-6">
+                <div>
+                    <h2 class="text-lg font-bold flex items-center gap-2 mb-1">
+                        <i class="fa-solid fa-sliders text-indigo-500"></i>
+                        Filtros
+                    </h2>
+                    <p class="text-xs text-slate-400">Personaliza la visualización de la disponibilidad del facilitador.</p>
+                </div>
+
+                <hr class="border-slate-100" />
+
+                <!-- Modality Filter -->
+                <div class="space-y-2">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-500">Modalidad</label>
+                    <div class="flex flex-col gap-2">
+                        <label class="inline-flex items-center text-sm cursor-pointer">
+                            <input type="checkbox" id="filter-modal-presencial" checked class="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 h-4 w-4">
+                            <span class="ml-2 flex items-center gap-1.5 text-slate-700">
+                                <span class="h-2 w-2 rounded-full bg-indigo-500"></span> Presencial
+                            </span>
+                        </label>
+                        <label class="inline-flex items-center text-sm cursor-pointer">
+                            <input type="checkbox" id="filter-modal-virtual" checked class="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 h-4 w-4">
+                            <span class="ml-2 flex items-center gap-1.5 text-slate-700">
+                                <span class="h-2 w-2 rounded-full bg-emerald-500"></span> Virtual
+                            </span>
+                        </label>
+                        <label class="inline-flex items-center text-sm cursor-pointer">
+                            <input type="checkbox" id="filter-modal-semi" checked class="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 h-4 w-4">
+                            <span class="ml-2 flex items-center gap-1.5 text-slate-700">
+                                <span class="h-2 w-2 rounded-full bg-amber-500"></span> Semipresencial
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Course Code Filter -->
+                <div class="space-y-2">
+                    <label for="filter-course-code" class="block text-xs font-bold uppercase tracking-wider text-slate-500">Código de Acción/Curso</label>
+                    <select id="filter-course-code" class="w-full rounded-lg border-slate-200 bg-slate-50 py-2 px-3 text-sm focus:border-indigo-500 focus:ring-indigo-500 border">
+                        <option value="ALL">Todos los códigos</option>
+                        <!-- Dynamic options -->
+                    </select>
+                </div>
+
+                <!-- Subjects Filter -->
+                <div class="space-y-2">
+                    <label for="filter-materia" class="block text-xs font-bold uppercase tracking-wider text-slate-500">Materia o Módulo</label>
+                    <select id="filter-materia" class="w-full rounded-lg border-slate-200 bg-slate-50 py-2 px-3 text-sm focus:border-indigo-500 focus:ring-indigo-500 border">
+                        <option value="ALL">Todas las materias</option>
+                        <!-- Dynamic options -->
+                    </select>
+                </div>
+
+                <!-- Quick Help / Details -->
+                <div class="bg-indigo-50/50 rounded-xl p-4 border border-indigo-100 space-y-2">
+                    <h3 class="text-xs font-bold text-indigo-800 uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fa-solid fa-circle-info"></i>
+                        Indicadores de Solapamiento
+                    </h3>
+                    <p class="text-xs text-indigo-950/70 leading-relaxed">
+                        El visualizador detecta solapamientos de horarios y te avisa mediante alertas interactivas si hay coincidencia de clases presenciales o virtuales en un mismo bloque de tiempo.
+                    </p>
+                </div>
+            </aside>
+
+            <!-- Tabs and Main Grid -->
+            <div class="lg:col-span-3 space-y-6">
+
+                <!-- View Selector / Tabs -->
+                <div class="bg-white p-1.5 rounded-xl shadow-sm border border-slate-100 flex gap-2 shrink-0">
+                    <button id="btn-tab-calendar" onclick="switchTab('calendar')" class="flex-1 py-2.5 px-4 rounded-lg text-sm font-semibold transition flex items-center justify-center gap-2 bg-indigo-600 text-white shadow">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        Calendario Mensual
+                    </button>
+                    <button id="btn-tab-weekly" onclick="switchTab('weekly')" class="flex-1 py-2.5 px-4 rounded-lg text-sm font-semibold transition flex items-center justify-center gap-2 text-slate-600 hover:bg-slate-50">
+                        <i class="fa-solid fa-calendar-week"></i>
+                        Matriz Semanal de Horarios
+                    </button>
+                    <button id="btn-tab-timeline" onclick="switchTab('timeline')" class="flex-1 py-2.5 px-4 rounded-lg text-sm font-semibold transition flex items-center justify-center gap-2 text-slate-600 hover:bg-slate-50">
+                        <i class="fa-solid fa-chart-gantt"></i>
+                        Línea de Tiempo (Gantt)
+                    </button>
+                </div>
+
+                <!-- Tab content 1: Interactive FullCalendar -->
+                <div id="tab-content-calendar" class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900">Agenda Mensual / Diaria</h3>
+                            <p class="text-xs text-slate-500">Visualiza exactamente los días asignados y haz clic en un evento para detalles completos.</p>
+                        </div>
+                        <div class="flex items-center gap-4 text-xs font-semibold">
+                            <span class="flex items-center gap-1.5"><span class="h-3 w-3 rounded-full bg-indigo-600"></span> Presencial</span>
+                            <span class="flex items-center gap-1.5"><span class="h-3 w-3 rounded-full bg-emerald-500"></span> Virtual</span>
+                            <span class="flex items-center gap-1.5"><span class="h-3 w-3 rounded-full bg-amber-500"></span> Semipresencial</span>
+                        </div>
+                    </div>
+                    <div id="calendar" class="min-h-[500px]"></div>
+                </div>
+
+                <!-- Tab content 2: Weekly Heatmap Matrix -->
+                <div id="tab-content-weekly" class="hidden bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4">
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900">Matriz de Horas Semanales</h3>
+                        <p class="text-xs text-slate-500">Representación consolidada de los bloques horarios recurrentes por día de la semana.</p>
+                    </div>
+
+                    <div class="overflow-x-auto border border-slate-100 rounded-xl custom-scrollbar">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 border-b border-slate-100">
+                                    <th class="p-3.5 text-xs font-bold uppercase tracking-wider text-slate-500">Rango Horario</th>
+                                    <th class="p-3.5 text-xs font-bold uppercase tracking-wider text-slate-500">Lunes</th>
+                                    <th class="p-3.5 text-xs font-bold uppercase tracking-wider text-slate-500">Martes</th>
+                                    <th class="p-3.5 text-xs font-bold uppercase tracking-wider text-slate-500">Miércoles</th>
+                                    <th class="p-3.5 text-xs font-bold uppercase tracking-wider text-slate-500">Jueves</th>
+                                    <th class="p-3.5 text-xs font-bold uppercase tracking-wider text-slate-500">Viernes</th>
+                                    <th class="p-3.5 text-xs font-bold uppercase tracking-wider text-slate-500">Sábado</th>
+                                    <th class="p-3.5 text-xs font-bold uppercase tracking-wider text-slate-500">Domingo</th>
+                                </tr>
+                            </thead>
+                            <tbody id="heatmap-body" class="divide-y divide-slate-100">
+                                <!-- Dynamic heatmap row cells -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tab content 3: Timeline (Gantt) -->
+                <div id="tab-content-timeline" class="hidden bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4">
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900">Línea de Tiempo de Capacitaciones</h3>
+                        <p class="text-xs text-slate-500">Gráfico Gantt interactivo que muestra las fechas de inicio y término para cada materia asignada.</p>
+                    </div>
+
+                    <!-- Gantt Chart container -->
+                    <div class="space-y-4" id="gantt-chart-container">
+                        <!-- Gantt bars list generated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Overlap and Alerts Panel -->
+                <div id="overlap-alerts-container" class="bg-amber-50 rounded-2xl border border-amber-200 p-5 hidden">
+                    <div class="flex gap-3">
+                        <div class="bg-amber-100 text-amber-700 p-2.5 h-fit rounded-xl">
+                            <i class="fa-solid fa-triangle-exclamation text-xl"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <h4 class="font-bold text-amber-900 text-sm md:text-base">Advertencias de Coincidencia Horaria / Solapamientos</h4>
+                            <p class="text-xs text-amber-800 leading-relaxed">
+                                Se han detectado las siguientes materias que ocurren de forma simultánea en las mismas fechas y rangos horarios recurrentes:
+                            </p>
+                            <ul id="overlap-alerts-list" class="list-disc pl-5 text-xs text-amber-950 font-medium space-y-1.5 mt-2">
+                                <!-- List of overlaps dynamically rendered -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course list table/grid at the bottom -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4">
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900">Listado Detallado de Acciones Formativas</h3>
+                        <p class="text-xs text-slate-500">Listado interactivo de cursos del facilitador con detalles de su modalidad y horas lectivas totales.</p>
+                    </div>
+
+                    <div class="overflow-x-auto border border-slate-100 rounded-xl custom-scrollbar">
+                        <table class="w-full text-left border-collapse text-sm">
+                            <thead>
+                                <tr class="bg-slate-50 border-b border-slate-100">
+                                    <th class="p-3.5 text-xs font-bold uppercase tracking-wider text-slate-500">Código</th>
+                                    <th class="p-3.5 text-xs font-bold uppercase tracking-wider text-slate-500">Salida / Especialidad</th>
+                                    <th class="p-3.5 text-xs font-bold uppercase tracking-wider text-slate-500">Materia</th>
+                                    <th class="p-3.5 text-xs font-bold uppercase tracking-wider text-slate-500">Periodo</th>
+                                    <th class="p-3.5 text-xs font-bold uppercase tracking-wider text-slate-500">Modalidad</th>
+                                    <th class="p-3.5 text-xs font-bold uppercase tracking-wider text-slate-500">Horas</th>
+                                </tr>
+                            </thead>
+                            <tbody id="course-details-body" class="divide-y divide-slate-100">
+                                <!-- Generated Dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 px-6 text-center text-xs text-slate-500 shrink-0">
+        <p class="max-w-7xl mx-auto">
+            &copy; 2026 INFOTEP Visualizador de Disponibilidad y Calendario de Facilitadores. Desarrollado con tecnología de procesamiento dinámico de PDFs de Reporting Services.
+        </p>
+    </footer>
+
+    <!-- Custom modal for schedule details -->
+    <div id="details-modal" class="hidden fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 space-y-4 relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="flex items-center gap-3">
+                <div id="modal-modality-icon" class="p-3 rounded-xl bg-indigo-50 text-indigo-600">
+                    <i class="fa-solid fa-book"></i>
+                </div>
+                <div>
+                    <span id="modal-modality-badge" class="px-2 py-0.5 rounded text-[10px] font-bold tracking-wider uppercase">MODALIDAD</span>
+                    <h3 id="modal-materia" class="text-lg font-extrabold text-slate-950 mt-1">Nombre de la materia</h3>
+                </div>
+            </div>
+
+            <hr class="border-slate-100">
+
+            <div class="grid grid-cols-2 gap-4 text-xs md:text-sm">
+                <div>
+                    <span class="text-slate-400 font-semibold block">Código de Acción</span>
+                    <span id="modal-code" class="font-bold text-slate-800">--</span>
+                </div>
+                <div>
+                    <span class="text-slate-400 font-semibold block">Horas totales de este bloque</span>
+                    <span id="modal-hours" class="font-bold text-slate-800">--</span>
+                </div>
+                <div class="col-span-2">
+                    <span class="text-slate-400 font-semibold block">Especialidad / Salida</span>
+                    <span id="modal-salida" class="font-bold text-slate-800">--</span>
+                </div>
+                <div>
+                    <span class="text-slate-400 font-semibold block">Fecha de Inicio</span>
+                    <span id="modal-start-date" class="font-bold text-slate-800">--</span>
+                </div>
+                <div>
+                    <span class="text-slate-400 font-semibold block">Fecha de Término</span>
+                    <span id="modal-end-date" class="font-bold text-slate-800">--</span>
+                </div>
+                <div class="col-span-2">
+                    <span class="text-slate-400 font-semibold block">Regional</span>
+                    <span id="modal-regional" class="font-bold text-slate-800">--</span>
+                </div>
+            </div>
+
+            <div id="modal-schedule-block" class="bg-slate-50 p-3 rounded-xl border border-slate-100 space-y-1.5">
+                <span class="text-slate-400 font-bold text-xs uppercase block">Horario Semanal Recurrente</span>
+                <div id="modal-days-list" class="text-xs space-y-1 font-semibold text-slate-700">
+                    <!-- List of days and hours -->
+                </div>
+            </div>
+
+            <div class="flex justify-end pt-2">
+                <button onclick="closeModal()" class="bg-indigo-600 hover:bg-indigo-700 transition text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-md shadow-indigo-600/10">
+                    Entendido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import parsed database -->
+    <script src="data.js"></script>
+
+    <!-- App JavaScript Logic -->
+    <script>
+        const DAYS_ORDER = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+        let calendarInstance = null;
+        let activeTab = 'calendar';
+
+        // Helper to convert date DD/MM/YYYY to ISO YYYY-MM-DD
+        function parseToIso(dateStr) {
+            const parts = dateStr.split('/');
+            if (parts.length !== 3) return null;
+            return `${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`;
+        }
+
+        // Helper to map weekday names from Spanish to numeric (0 Sunday, 1 Monday, etc.)
+        const weekdayMap = {
+            'Lunes': 1,
+            'Martes': 2,
+            'Miércoles': 3,
+            'Jueves': 4,
+            'Viernes': 5,
+            'Sábado': 6,
+            'Domingo': 0
+        };
+
+        const weekdayIndexMap = {
+            1: 'Lunes',
+            2: 'Martes',
+            3: 'Miércoles',
+            4: 'Jueves',
+            5: 'Viernes',
+            6: 'Sábado',
+            0: 'Domingo'
+        };
+
+        // Modality-specific colors
+        const modalityColors = {
+            'Presencial': { bg: 'rgba(79, 70, 229, 0.1)', border: '#4f46e5', text: '#4f46e5', badge: 'bg-indigo-100 text-indigo-800' },
+            'Virtual': { bg: 'rgba(16, 185, 129, 0.1)', border: '#10b981', text: '#10b981', badge: 'bg-emerald-100 text-emerald-800' },
+            'Semipresencial': { bg: 'rgba(245, 158, 11, 0.1)', border: '#f59e0b', text: '#f59e0b', badge: 'bg-amber-100 text-amber-800' }
+        };
+
+        // Tab Switching
+        function switchTab(tabId) {
+            activeTab = tabId;
+            const tabs = ['calendar', 'weekly', 'timeline'];
+            tabs.forEach(t => {
+                const el = document.getElementById(`tab-content-${t}`);
+                const btn = document.getElementById(`btn-tab-${t}`);
+                if (t === tabId) {
+                    el.classList.remove('hidden');
+                    btn.classList.add('bg-indigo-600', 'text-white', 'shadow');
+                    btn.classList.remove('text-slate-600', 'hover:bg-slate-50');
+                } else {
+                    el.classList.add('hidden');
+                    btn.classList.remove('bg-indigo-600', 'text-white', 'shadow');
+                    btn.classList.add('text-slate-600', 'hover:bg-slate-50');
+                }
+            });
+
+            if (tabId === 'calendar' && calendarInstance) {
+                // Relayout calendar in case it was hidden
+                calendarInstance.updateSize();
+            }
+        }
+
+        // Main loader and state
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update Facilitator Profile details
+            document.getElementById('facilitator-name-header').innerText = SCHEDULE_DATA.facilitator_name;
+            document.getElementById('facilitator-doc-header').innerText = SCHEDULE_DATA.facilitator_doc;
+
+            // Populate filters
+            populateFilters();
+
+            // Build KPIs
+            calculateKPIs();
+
+            // Setup listeners for filters
+            document.getElementById('filter-modal-presencial').addEventListener('change', updateAllViews);
+            document.getElementById('filter-modal-virtual').addEventListener('change', updateAllViews);
+            document.getElementById('filter-modal-semi').addEventListener('change', updateAllViews);
+            document.getElementById('filter-course-code').addEventListener('change', updateAllViews);
+            document.getElementById('filter-materia').addEventListener('change', updateAllViews);
+
+            // Initialize views
+            initCalendar();
+            renderHeatmap();
+            renderGantt();
+            renderCourseListTable();
+            checkAndRenderOverlaps();
+        });
+
+        function populateFilters() {
+            const selectCode = document.getElementById('filter-course-code');
+            const selectMateria = document.getElementById('filter-materia');
+
+            const codesSet = new Set();
+            const materiasSet = new Set();
+
+            SCHEDULE_DATA.courses.forEach(course => {
+                if (course.code) codesSet.add(course.code);
+                course.schedules.forEach(sched => {
+                    if (sched.materia) materiasSet.add(sched.materia);
+                });
+            });
+
+            // Populate Codes filter
+            Array.from(codesSet).sort().forEach(code => {
+                const opt = document.createElement('option');
+                opt.value = code;
+                opt.innerText = `Código: ${code}`;
+                selectCode.appendChild(opt);
+            });
+
+            // Populate Materias filter
+            Array.from(materiasSet).sort().forEach(materia => {
+                const opt = document.createElement('option');
+                opt.value = materia;
+                opt.innerText = materia;
+                selectMateria.appendChild(opt);
+            });
+        }
+
+        function calculateKPIs() {
+            let totalHours = 0;
+            const modalities = new Set();
+            const uniqueCourses = new Set();
+
+            let minDate = null;
+            let maxDate = null;
+
+            SCHEDULE_DATA.courses.forEach(course => {
+                uniqueCourses.add(course.code);
+                course.schedules.forEach(sched => {
+                    if (sched.hours) totalHours += parseInt(sched.hours) || 0;
+                    if (sched.modality) modalities.add(sched.modality);
+
+                    const startD = new Date(parseToIso(sched.start_date));
+                    const endD = new Date(parseToIso(sched.end_date));
+
+                    if (!minDate || startD < minDate) minDate = startD;
+                    if (!maxDate || endD > maxDate) maxDate = endD;
+                });
+            });
+
+            document.getElementById('kpi-total-courses').innerText = uniqueCourses.size;
+            document.getElementById('kpi-total-hours').innerText = `${totalHours} hrs`;
+
+            if (minDate && maxDate) {
+                const months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+                const minStr = `${months[minDate.getMonth()]} ${minDate.getFullYear()}`;
+                const maxStr = `${months[maxDate.getMonth()]} ${maxDate.getFullYear()}`;
+                document.getElementById('kpi-date-range').innerText = `${minStr} - ${maxStr}`;
+            }
+
+            // Modalities pills
+            const pillsContainer = document.getElementById('kpi-modalities-pills');
+            pillsContainer.innerHTML = '';
+            Array.from(modalities).forEach(mod => {
+                const badgeStyle = modalityColors[mod] || { badge: 'bg-slate-100 text-slate-800' };
+                const span = document.createElement('span');
+                span.className = `px-2 py-1 rounded-full ${badgeStyle.badge} flex items-center gap-1`;
+                let iconClass = 'fa-solid fa-book';
+                if (mod === 'Presencial') iconClass = 'fa-solid fa-users';
+                if (mod === 'Virtual') iconClass = 'fa-solid fa-laptop';
+                if (mod === 'Semipresencial') iconClass = 'fa-solid fa-circle-half-stroke';
+
+                span.innerHTML = `<i class="${iconClass}"></i> ${mod}`;
+                pillsContainer.appendChild(span);
+            });
+        }
+
+        function getFilteredData() {
+            const presChecked = document.getElementById('filter-modal-presencial').checked;
+            const virtChecked = document.getElementById('filter-modal-virtual').checked;
+            const semiChecked = document.getElementById('filter-modal-semi').checked;
+            const selectedCode = document.getElementById('filter-course-code').value;
+            const selectedMateria = document.getElementById('filter-materia').value;
+
+            const filteredCourses = [];
+
+            SCHEDULE_DATA.courses.forEach(course => {
+                // Filter course code
+                if (selectedCode !== 'ALL' && course.code !== selectedCode) return;
+
+                const filteredSchedules = [];
+
+                course.schedules.forEach(sched => {
+                    // Filter modality
+                    if (sched.modality === 'Presencial' && !presChecked) return;
+                    if (sched.modality === 'Virtual' && !virtChecked) return;
+                    if (sched.modality === 'Semipresencial' && !semiChecked) return;
+
+                    // Filter materia
+                    if (selectedMateria !== 'ALL' && sched.materia !== selectedMateria) return;
+
+                    filteredSchedules.push(sched);
+                });
+
+                if (filteredSchedules.length > 0) {
+                    filteredCourses.push({
+                        ...course,
+                        schedules: filteredSchedules
+                    });
+                }
+            });
+
+            return filteredCourses;
+        }
+
+        function updateAllViews() {
+            // Re-render calendar
+            if (calendarInstance) {
+                const events = getCalendarEvents();
+                calendarInstance.removeAllEvents();
+                calendarInstance.addEventSource(events);
+            }
+            renderHeatmap();
+            renderGantt();
+            renderCourseListTable();
+            checkAndRenderOverlaps();
+        }
+
+        // FullCalendar Events builder
+        function getCalendarEvents() {
+            const filtered = getFilteredData();
+            const events = [];
+
+            filtered.forEach(course => {
+                course.schedules.forEach(sched => {
+                    const startIso = parseToIso(sched.start_date);
+                    const endIso = parseToIso(sched.end_date);
+                    if (!startIso || !endIso) return;
+
+                    // Generate a list of days on which this class runs between start and end date
+                    const startD = new Date(startIso + 'T00:00:00');
+                    const endD = new Date(endIso + 'T00:00:00');
+
+                    for (let d = new Date(startD); d <= endD; d.setDate(d.getDate() + 1)) {
+                        const dayName = weekdayIndexMap[d.getDay()];
+                        if (sched.days[dayName]) {
+                            // Class happens on this weekday!
+                            const timeRange = sched.days[dayName];
+                            const [startTime, endTime] = timeRange.split('-');
+
+                            // Form date string YYYY-MM-DD
+                            const yr = d.getFullYear();
+                            const mo = String(d.getMonth() + 1).padStart(2, '0');
+                            const dy = String(d.getDate()).padStart(2, '0');
+                            const dateStr = `${yr}-${mo}-${dy}`;
+
+                            const colorConfig = modalityColors[sched.modality] || { border: '#4f46e5', bg: 'rgba(79, 70, 229, 0.1)', text: '#4f46e5' };
+
+                            events.push({
+                                title: `${sched.materia === 'N/A' ? course.salida : sched.materia} (${sched.modality})`,
+                                start: `${dateStr}T${startTime}:00`,
+                                end: `${dateStr}T${endTime}:00`,
+                                color: colorConfig.border,
+                                textColor: colorConfig.border,
+                                backgroundColor: colorConfig.bg,
+                                borderColor: colorConfig.border,
+                                extendedProps: {
+                                    course: course,
+                                    schedule: sched,
+                                    dayName: dayName,
+                                    timeRange: timeRange
+                                }
+                            });
+                        }
+                    }
+                });
+            });
+
+            return events;
+        }
+
+        function initCalendar() {
+            const calendarEl = document.getElementById('calendar');
+            const events = getCalendarEvents();
+
+            calendarInstance = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'es',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                initialDate: '2026-03-01', // Set to when courses begin
+                events: events,
+                eventClick: function(info) {
+                    showEventModal(info.event);
+                },
+                eventTimeFormat: {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    meridiem: false,
+                    hour12: false
+                },
+                buttonText: {
+                    today: 'Hoy',
+                    month: 'Mes',
+                    week: 'Semana',
+                    day: 'Día'
+                },
+                allDaySlot: false,
+                slotMinTime: '06:00:00',
+                slotMaxTime: '23:00:00'
+            });
+
+            calendarInstance.render();
+        }
+
+        // Details Modal Manager
+        function showEventModal(event) {
+            const props = event.extendedProps;
+            const course = props.course;
+            const sched = props.schedule;
+
+            const mod = sched.modality;
+            const colorConfig = modalityColors[mod] || { badge: 'bg-slate-100 text-slate-800' };
+
+            document.getElementById('modal-materia').innerText = sched.materia === 'N/A' ? course.salida : sched.materia;
+            document.getElementById('modal-modality-badge').className = `px-2 py-0.5 rounded text-[10px] font-bold tracking-wider uppercase ${colorConfig.badge}`;
+            document.getElementById('modal-modality-badge').innerText = mod;
+
+            document.getElementById('modal-code').innerText = course.code;
+            document.getElementById('modal-hours').innerText = `${sched.hours} Horas Lectivas`;
+            document.getElementById('modal-salida').innerText = course.salida;
+            document.getElementById('modal-start-date').innerText = sched.start_date;
+            document.getElementById('modal-end-date').innerText = sched.end_date;
+            document.getElementById('modal-regional').innerText = course.regional;
+
+            // Generate daily days list
+            const daysContainer = document.getElementById('modal-days-list');
+            daysContainer.innerHTML = '';
+            for (const [day, time] of Object.entries(sched.days)) {
+                const div = document.createElement('div');
+                div.className = 'flex items-center gap-2 py-0.5 border-b border-slate-100 last:border-0';
+                div.innerHTML = `<span class="text-indigo-600 font-bold w-20">${day}:</span> <span class="text-slate-800 font-mono">${time}</span>`;
+                daysContainer.appendChild(div);
+            }
+
+            // Map modalities icon
+            const iconContainer = document.getElementById('modal-modality-icon');
+            iconContainer.innerHTML = '';
+            let icon = 'fa-book';
+            if (mod === 'Presencial') {
+                icon = 'fa-users';
+                iconContainer.className = 'p-3 rounded-xl bg-indigo-50 text-indigo-600';
+            } else if (mod === 'Virtual') {
+                icon = 'fa-laptop';
+                iconContainer.className = 'p-3 rounded-xl bg-emerald-50 text-emerald-600';
+            } else if (mod === 'Semipresencial') {
+                icon = 'fa-circle-half-stroke';
+                iconContainer.className = 'p-3 rounded-xl bg-amber-50 text-amber-600';
+            }
+            iconContainer.innerHTML = `<i class="fa-solid ${icon} text-xl"></i>`;
+
+            document.getElementById('details-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('details-modal').classList.add('hidden');
+        }
+
+        // Heatmap Matrix Render
+        function renderHeatmap() {
+            const filtered = getFilteredData();
+            const container = document.getElementById('heatmap-body');
+            container.innerHTML = '';
+
+            // Generate discrete hours from 07:00 to 22:00
+            const hourlyBlocks = [
+                { start: '07:00', end: '08:00' },
+                { start: '08:00', end: '13:00' },
+                { start: '13:00', end: '14:00' },
+                { start: '14:00', end: '19:00' },
+                { start: '20:00', end: '22:00' }
+            ];
+
+            hourlyBlocks.forEach(block => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-slate-50 transition border-b border-slate-100';
+
+                // Hour range label
+                const tdHour = document.createElement('td');
+                tdHour.className = 'p-3 text-xs md:text-sm font-semibold text-slate-700 bg-slate-50 border-r border-slate-100 font-mono';
+                tdHour.innerHTML = `<i class="fa-regular fa-clock text-indigo-400 mr-1.5"></i> ${block.start} - ${block.end}`;
+                tr.appendChild(tdHour);
+
+                // Build each day
+                DAYS_ORDER.forEach(day => {
+                    const tdDay = document.createElement('td');
+                    tdDay.className = 'p-3 text-xs border-r border-slate-100 relative min-w-[120px]';
+
+                    // Check which schedules match this day and block
+                    const matches = [];
+                    filtered.forEach(course => {
+                        course.schedules.forEach(sched => {
+                            if (sched.days[day]) {
+                                const range = sched.days[day];
+                                const [sTime, eTime] = range.split('-');
+                                // Check for exact or overlapping matches
+                                if (sTime === block.start && eTime === block.end) {
+                                    matches.push({ course, sched });
+                                }
+                            }
+                        });
+                    });
+
+                    if (matches.length > 0) {
+                        const cellWrapper = document.createElement('div');
+                        cellWrapper.className = 'space-y-1';
+
+                        matches.forEach(match => {
+                            const mod = match.sched.modality;
+                            const colors = modalityColors[mod] || { border: '#4f46e5', bg: 'rgba(79, 70, 229, 0.1)' };
+
+                            const chip = document.createElement('div');
+                            chip.className = 'heatmap-cell rounded px-2 py-1 border text-[10px] font-semibold cursor-pointer shadow-sm transition';
+                            chip.style.borderColor = colors.border;
+                            chip.style.backgroundColor = colors.bg;
+                            chip.style.color = colors.border;
+
+                            const label = match.sched.materia === 'N/A' ? match.course.salida : match.sched.materia;
+                            chip.innerHTML = `
+                                <div class="font-bold truncate text-[11px]">${label}</div>
+                                <div class="flex items-center justify-between text-[9px] opacity-80 mt-0.5 font-mono">
+                                    <span>${match.course.code}</span>
+                                    <span>${mod}</span>
+                                </div>
+                            `;
+
+                            // OnClick handler to show event modal
+                            chip.onclick = () => {
+                                const fakeEvent = {
+                                    extendedProps: {
+                                        course: match.course,
+                                        schedule: match.sched
+                                    }
+                                };
+                                showEventModal(fakeEvent);
+                            };
+
+                            cellWrapper.appendChild(chip);
+                        });
+
+                        tdDay.appendChild(cellWrapper);
+                    } else {
+                        tdDay.innerHTML = '<span class="text-slate-300 italic text-[10px] block text-center py-2">Disponible</span>';
+                    }
+
+                    tr.appendChild(tdDay);
+                });
+
+                container.appendChild(tr);
+            });
+        }
+
+        // Gantt Timeline Render
+        function renderGantt() {
+            const filtered = getFilteredData();
+            const container = document.getElementById('gantt-chart-container');
+            container.innerHTML = '';
+
+            if (filtered.length === 0) {
+                container.innerHTML = '<div class="text-center py-8 text-slate-400 text-sm">No hay datos que coincidan con los filtros.</div>';
+                return;
+            }
+
+            // Find absolute boundaries
+            let minD = null;
+            let maxD = null;
+
+            filtered.forEach(course => {
+                course.schedules.forEach(sched => {
+                    const sIso = parseToIso(sched.start_date);
+                    const eIso = parseToIso(sched.end_date);
+                    if (sIso && eIso) {
+                        const s = new Date(sIso);
+                        const e = new Date(eIso);
+                        if (!minD || s < minD) minD = s;
+                        if (!maxD || e > maxD) maxD = e;
+                    }
+                });
+            });
+
+            if (!minD || !maxD) return;
+
+            // Pad min and max dates a bit
+            minD = new Date(minD.setDate(1)); // Start at 1st of month
+            maxD = new Date(maxD.setMonth(maxD.getMonth() + 1));
+            maxD = new Date(maxD.setDate(0)); // End of that month
+
+            const totalSpanDays = (maxD - minD) / (1000 * 60 * 60 * 24);
+
+            // Print months header
+            const monthsHeader = document.createElement('div');
+            monthsHeader.className = 'grid grid-cols-12 text-center text-xs font-bold text-slate-500 border-b border-slate-100 pb-2';
+
+            // Generate visual columns of months
+            const tempD = new Date(minD);
+            const monthsList = [];
+            while (tempD <= maxD) {
+                const mName = tempD.toLocaleDateString('es-ES', { month: 'short', year: '2-digit' });
+                monthsList.push(mName);
+                tempD.setMonth(tempD.getMonth() + 1);
+            }
+
+            // Render timelines
+            filtered.forEach(course => {
+                course.schedules.forEach(sched => {
+                    const sIso = parseToIso(sched.start_date);
+                    const eIso = parseToIso(sched.end_date);
+                    if (!sIso || !eIso) return;
+
+                    const rowDiv = document.createElement('div');
+                    rowDiv.className = 'space-y-1 bg-slate-50/50 p-2.5 rounded-xl border border-slate-100 hover:border-slate-200 transition';
+
+                    const startD = new Date(sIso);
+                    const endD = new Date(eIso);
+
+                    const leftOffsetPct = Math.max(0, ((startD - minD) / (1000 * 60 * 60 * 24)) / totalSpanDays * 100);
+                    const widthPct = Math.max(2, ((endD - startD) / (1000 * 60 * 60 * 24)) / totalSpanDays * 100);
+
+                    const label = sched.materia === 'N/A' ? course.salida : sched.materia;
+                    const mod = sched.modality;
+                    const colorConfig = modalityColors[mod] || { border: '#4f46e5', bg: '#4f46e5' };
+
+                    rowDiv.innerHTML = `
+                        <div class="flex items-center justify-between text-xs font-semibold px-1">
+                            <span class="text-slate-900 font-bold truncate max-w-[280px]">${label}</span>
+                            <span class="text-slate-400 font-mono text-[10px]">${sched.start_date} al ${sched.end_date} | ${sched.hours}h</span>
+                        </div>
+                        <div class="relative w-full h-8 bg-slate-200/40 rounded-lg overflow-hidden border border-slate-100/50">
+                            <div class="absolute h-full flex items-center justify-center text-[10px] font-bold text-white shadow-inner transition hover:brightness-95 cursor-pointer px-2"
+                                 style="left: ${leftOffsetPct}%; width: ${widthPct}%; background-color: ${colorConfig.border};"
+                                 onclick="showEventModal({extendedProps: {course: ${JSON.stringify(course).replace(/"/g, '&quot;')}, schedule: ${JSON.stringify(sched).replace(/"/g, '&quot;')}}})">
+                                <span class="truncate">${mod} - ${course.code}</span>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(rowDiv);
+                });
+            });
+        }
+
+        // Detailed courses list table render
+        function renderCourseListTable() {
+            const filtered = getFilteredData();
+            const body = document.getElementById('course-details-body');
+            body.innerHTML = '';
+
+            if (filtered.length === 0) {
+                body.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-slate-400 italic">No hay acciones formativas que coincidan con los filtros aplicados.</td></tr>`;
+                return;
+            }
+
+            filtered.forEach(course => {
+                course.schedules.forEach(sched => {
+                    const tr = document.createElement('tr');
+                    tr.className = 'hover:bg-slate-50/70 transition border-b border-slate-100/70 cursor-pointer';
+
+                    const label = sched.materia === 'N/A' ? 'Módulo General (N/A)' : sched.materia;
+                    const colors = modalityColors[sched.modality] || { badge: 'bg-slate-100 text-slate-800' };
+
+                    tr.innerHTML = `
+                        <td class="p-3.5 font-bold text-slate-900 font-mono text-xs">${course.code}</td>
+                        <td class="p-3.5 font-semibold text-slate-800">${course.salida}</td>
+                        <td class="p-3.5 font-medium text-slate-600">${label}</td>
+                        <td class="p-3.5 font-semibold text-slate-600 font-mono text-xs">${sched.start_date} - ${sched.end_date}</td>
+                        <td class="p-3.5">
+                            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${colors.badge}">${sched.modality}</span>
+                        </td>
+                        <td class="p-3.5 font-bold text-slate-900 text-right pr-6">${sched.hours}h</td>
+                    `;
+
+                    tr.onclick = () => {
+                        const fakeEvent = {
+                            extendedProps: {
+                                course: course,
+                                schedule: sched
+                            }
+                        };
+                        showEventModal(fakeEvent);
+                    };
+
+                    body.appendChild(tr);
+                });
+            });
+        }
+
+        // Overlap Detection and Alerts
+        function checkAndRenderOverlaps() {
+            const courses = SCHEDULE_DATA.courses;
+            const overlaps = [];
+
+            // A helper to parse date strings DD/MM/YYYY to JS Date objects
+            function toDate(str) {
+                const [d, m, y] = str.split('/').map(Number);
+                return new Date(y, m - 1, d);
+            }
+
+            // Convert time 'HH:MM' to decimal minutes for overlap math
+            function toMinutes(timeStr) {
+                const [h, m] = timeStr.split(':').map(Number);
+                return h * 60 + m;
+            }
+
+            // Find overlapping intervals
+            // For every schedule, see if there is another schedule that overlaps in date span, shares a weekday, and overlaps in hours
+            const allItems = [];
+            courses.forEach(c => {
+                c.schedules.forEach(s => {
+                    allItems.push({ course: c, schedule: s });
+                });
+            });
+
+            for (let i = 0; i < allItems.length; i++) {
+                for (let j = i + 1; j < allItems.length; j++) {
+                    const item1 = allItems[i];
+                    const item2 = allItems[j];
+
+                    const start1 = toDate(item1.schedule.start_date);
+                    const end1 = toDate(item1.schedule.end_date);
+                    const start2 = toDate(item2.schedule.start_date);
+                    const end2 = toDate(item2.schedule.end_date);
+
+                    // Check if date intervals overlap
+                    if (start1 <= end2 && start2 <= end1) {
+                        // Yes, date ranges overlap. Now check if they share any weekday with overlapping hours
+                        for (const day of DAYS_ORDER) {
+                            if (item1.schedule.days[day] && item2.schedule.days[day]) {
+                                // Both classes run on this day! Check time overlap
+                                const [s1, e1] = item1.schedule.days[day].split('-').map(toMinutes);
+                                const [s2, e2] = item2.schedule.days[day].split('-').map(toMinutes);
+
+                                if (s1 < e2 && s2 < e1) {
+                                    // Time overlaps!
+                                    const label1 = item1.schedule.materia === 'N/A' ? item1.course.salida : item1.schedule.materia;
+                                    const label2 = item2.schedule.materia === 'N/A' ? item2.course.salida : item2.schedule.materia;
+
+                                    overlaps.push({
+                                        day: day,
+                                        materia1: label1,
+                                        code1: item1.course.code,
+                                        time1: item1.schedule.days[day],
+                                        materia2: label2,
+                                        code2: item2.course.code,
+                                        time2: item2.schedule.days[day],
+                                        dates: `${item1.schedule.start_date} al ${item1.schedule.end_date}`
+                                    });
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            const alertContainer = document.getElementById('overlap-alerts-container');
+            const alertList = document.getElementById('overlap-alerts-list');
+            alertList.innerHTML = '';
+
+            if (overlaps.length > 0) {
+                alertContainer.classList.remove('hidden');
+
+                // Deduplicate warnings
+                const uniqueWarnings = new Set();
+                overlaps.forEach(o => {
+                    const warnText = `<b>${o.day}</b> de <b>${o.dates}</b>: El curso "${o.materia1}" (Acción: ${o.code1}) en horario <b>${o.time1}</b> colisiona con "${o.materia2}" (Acción: ${o.code2}) en horario <b>${o.time2}</b>.`;
+                    uniqueWarnings.add(warnText);
+                });
+
+                uniqueWarnings.forEach(warn => {
+                    const li = document.createElement('li');
+                    li.innerHTML = warn;
+                    alertList.appendChild(li);
+                });
+            } else {
+                alertContainer.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
