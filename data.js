@@ -1,6 +1,1445 @@
 const SCHEDULE_DATABASE = {
   "facilitators": [
     {
+      "facilitator_name": "JOHAN MANUEL TAPIA BUENO",
+      "facilitator_doc": "001-0527055-7",
+      "courses": [
+        {
+          "code": "20261600686",
+          "salida": "SUPERVISORY EXCELLENCE PROGRAM",
+          "modalidad": "HABILITACION",
+          "regional": "DIRECCION REGIONAL ORIENTAL",
+          "schedules": [
+            {
+              "materia": "MICROSOFT OFFICE AVANZADO",
+              "start_date": "19/03/2026",
+              "end_date": "22/03/2026",
+              "days": {
+                "Jueves": "20:00-22:00",
+                "Viernes": "20:00-22:00",
+                "Sábado": "20:00-22:00",
+                "Domingo": "20:00-22:00"
+              },
+              "hours": 8,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "MICROSOFT OFFICE AVANZADO",
+              "start_date": "23/03/2026",
+              "end_date": "29/03/2026",
+              "days": {
+                "Lunes": "20:00-22:00",
+                "Martes": "20:00-22:00",
+                "Miércoles": "20:00-22:00",
+                "Jueves": "20:00-22:00",
+                "Viernes": "20:00-22:00",
+                "Sábado": "20:00-22:00",
+                "Domingo": "20:00-22:00"
+              },
+              "hours": 14,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "MICROSOFT OFFICE AVANZADO",
+              "start_date": "30/03/2026",
+              "end_date": "05/04/2026",
+              "days": {
+                "Lunes": "20:00-22:00",
+                "Martes": "20:00-22:00",
+                "Miércoles": "20:00-22:00",
+                "Jueves": "20:00-22:00",
+                "Sábado": "20:00-22:00",
+                "Domingo": "20:00-22:00"
+              },
+              "hours": 12,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "MICROSOFT OFFICE AVANZADO",
+              "start_date": "06/04/2026",
+              "end_date": "08/04/2026",
+              "days": {
+                "Lunes": "20:00-22:00",
+                "Martes": "20:00-22:00",
+                "Miércoles": "20:00-22:00"
+              },
+              "hours": 6,
+              "modality": "Virtual"
+            }
+          ]
+        },
+        {
+          "code": "20261800339",
+          "salida": "EXCEL BASICO",
+          "modalidad": "CAPACITACION PERMANENTE",
+          "regional": "DIRECCION REGIONAL VALDESIA",
+          "schedules": [
+            {
+              "materia": "N/A",
+              "start_date": "25/03/2026",
+              "end_date": "27/03/2026",
+              "days": {
+                "Miércoles": "09:00-17:00",
+                "Viernes": "09:00-17:00"
+              },
+              "hours": 16,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "01/04/2026",
+              "end_date": "01/04/2026",
+              "days": {
+                "Miércoles": "09:00-17:00"
+              },
+              "hours": 8,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "08/04/2026",
+              "end_date": "08/04/2026",
+              "days": {
+                "Miércoles": "09:00-15:00"
+              },
+              "hours": 6,
+              "modality": "Virtual"
+            }
+          ]
+        },
+        {
+          "code": "20261600167",
+          "salida": "TECNICO EN CIBERSEGURIDAD",
+          "modalidad": "FORMACION CONTINUA EN CENTRO",
+          "regional": "DIRECCION REGIONAL ORIENTAL",
+          "schedules": [
+            {
+              "materia": "INTRODUCCION A LA PROGRAMACION",
+              "start_date": "20/04/2026",
+              "end_date": "24/04/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTRODUCCION A LA PROGRAMACION",
+              "start_date": "27/04/2026",
+              "end_date": "30/04/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-16:00"
+              },
+              "hours": 15,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "ESTRUCTURA DE DATOS Y",
+              "start_date": "01/05/2026",
+              "end_date": "01/05/2026",
+              "days": {
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 4,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "ESTRUCTURA DE DATOS Y",
+              "start_date": "05/05/2026",
+              "end_date": "08/05/2026",
+              "days": {
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 16,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "ESTRUCTURA DE DATOS Y",
+              "start_date": "11/05/2026",
+              "end_date": "14/05/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-16:00"
+              },
+              "hours": 15,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTRODUCCION Y DISENO DE BASE",
+              "start_date": "15/05/2026",
+              "end_date": "15/05/2026",
+              "days": {
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 4,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTRODUCCION Y DISENO DE BASE",
+              "start_date": "18/05/2026",
+              "end_date": "22/05/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTRODUCCION Y DISENO DE BASE",
+              "start_date": "25/05/2026",
+              "end_date": "29/05/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTRODUCCION Y DISENO DE BASE",
+              "start_date": "01/06/2026",
+              "end_date": "05/06/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 16,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTRODUCCION Y DISENO DE BASE",
+              "start_date": "08/06/2026",
+              "end_date": "09/06/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-14:00"
+              },
+              "hours": 5,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "PROGRAMACION EN LENGUAJE C++",
+              "start_date": "10/06/2026",
+              "end_date": "12/06/2026",
+              "days": {
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 12,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "PROGRAMACION EN LENGUAJE C++",
+              "start_date": "15/06/2026",
+              "end_date": "19/06/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "PROGRAMACION EN LENGUAJE C++",
+              "start_date": "22/06/2026",
+              "end_date": "25/06/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-14:00"
+              },
+              "hours": 13,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTRODUCCION A LA PROGRAMACION",
+              "start_date": "26/06/2026",
+              "end_date": "26/06/2026",
+              "days": {
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 4,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTRODUCCION A LA PROGRAMACION",
+              "start_date": "29/06/2026",
+              "end_date": "03/07/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTRODUCCION A LA PROGRAMACION",
+              "start_date": "06/07/2026",
+              "end_date": "09/07/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00"
+              },
+              "hours": 16,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTRODUCCION A LAS REDES DE",
+              "start_date": "10/07/2026",
+              "end_date": "10/07/2026",
+              "days": {
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 4,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTRODUCCION A LAS REDES DE",
+              "start_date": "13/07/2026",
+              "end_date": "17/07/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTRODUCCION A LAS REDES DE",
+              "start_date": "20/07/2026",
+              "end_date": "24/07/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTRODUCCION A LAS REDES DE",
+              "start_date": "27/07/2026",
+              "end_date": "30/07/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00"
+              },
+              "hours": 16,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "PROTOCOLOS IP EN LAS",
+              "start_date": "31/07/2026",
+              "end_date": "31/07/2026",
+              "days": {
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 4,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "PROTOCOLOS IP EN LAS",
+              "start_date": "03/08/2026",
+              "end_date": "07/08/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "PROTOCOLOS IP EN LAS",
+              "start_date": "10/08/2026",
+              "end_date": "14/08/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "PROTOCOLOS IP EN LAS",
+              "start_date": "17/08/2026",
+              "end_date": "20/08/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00"
+              },
+              "hours": 16,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTERNET DE LAS COSAS",
+              "start_date": "21/08/2026",
+              "end_date": "21/08/2026",
+              "days": {
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 4,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTERNET DE LAS COSAS",
+              "start_date": "24/08/2026",
+              "end_date": "28/08/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTERNET DE LAS COSAS",
+              "start_date": "31/08/2026",
+              "end_date": "04/09/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTERNET DE LAS COSAS",
+              "start_date": "07/09/2026",
+              "end_date": "09/09/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-16:00"
+              },
+              "hours": 11,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "FUNDAMENTOS DE SWITCHING,",
+              "start_date": "10/09/2026",
+              "end_date": "11/09/2026",
+              "days": {
+                "Jueves": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 8,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "FUNDAMENTOS DE SWITCHING,",
+              "start_date": "14/09/2026",
+              "end_date": "18/09/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "FUNDAMENTOS DE SWITCHING,",
+              "start_date": "21/09/2026",
+              "end_date": "25/09/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 16,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "FUNDAMENTOS DE SWITCHING,",
+              "start_date": "28/09/2026",
+              "end_date": "02/10/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "FUNDAMENTOS DE SWITCHING,",
+              "start_date": "05/10/2026",
+              "end_date": "09/10/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "FUNDAMENTOS DE SWITCHING,",
+              "start_date": "12/10/2026",
+              "end_date": "16/10/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "FUNDAMENTOS DE SWITCHING,",
+              "start_date": "19/10/2026",
+              "end_date": "22/10/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00"
+              },
+              "hours": 16,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "SEGURIDAD DE REDES",
+              "start_date": "23/10/2026",
+              "end_date": "23/10/2026",
+              "days": {
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 4,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "SEGURIDAD DE REDES",
+              "start_date": "26/10/2026",
+              "end_date": "30/10/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "SEGURIDAD DE REDES",
+              "start_date": "02/11/2026",
+              "end_date": "06/11/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "SEGURIDAD DE REDES",
+              "start_date": "10/11/2026",
+              "end_date": "11/11/2026",
+              "days": {
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-15:00"
+              },
+              "hours": 6,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "FUNDAMENTOS DE CIBERSEGURIDAD",
+              "start_date": "12/11/2026",
+              "end_date": "13/11/2026",
+              "days": {
+                "Jueves": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 8,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "FUNDAMENTOS DE CIBERSEGURIDAD",
+              "start_date": "16/11/2026",
+              "end_date": "20/11/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "FUNDAMENTOS DE CIBERSEGURIDAD",
+              "start_date": "23/11/2026",
+              "end_date": "27/11/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "FUNDAMENTOS DE CIBERSEGURIDAD",
+              "start_date": "30/11/2026",
+              "end_date": "04/12/2026",
+              "days": {
+                "Lunes": "13:00-17:00",
+                "Martes": "13:00-17:00",
+                "Miércoles": "13:00-17:00",
+                "Jueves": "13:00-17:00",
+                "Viernes": "13:00-17:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "FUNDAMENTOS DE CIBERSEGURIDAD",
+              "start_date": "07/12/2026",
+              "end_date": "07/12/2026",
+              "days": {
+                "Lunes": "13:00-15:00"
+              },
+              "hours": 2,
+              "modality": "Semipresencial"
+            }
+          ]
+        },
+        {
+          "code": "20261800645",
+          "salida": "MANEJO DE MICROSOFT OFFICE",
+          "modalidad": "CAPACITACION PERMANENTE",
+          "regional": "DIRECCION REGIONAL VALDESIA",
+          "schedules": [
+            {
+              "materia": "N/A",
+              "start_date": "25/05/2026",
+              "end_date": "27/05/2026",
+              "days": {
+                "Lunes": "08:00-13:00",
+                "Miércoles": "08:00-13:00"
+              },
+              "hours": 10,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "01/06/2026",
+              "end_date": "03/06/2026",
+              "days": {
+                "Lunes": "08:00-13:00",
+                "Miércoles": "08:00-13:00"
+              },
+              "hours": 10,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "08/06/2026",
+              "end_date": "10/06/2026",
+              "days": {
+                "Lunes": "08:00-13:00",
+                "Miércoles": "08:00-13:00"
+              },
+              "hours": 10,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "15/06/2026",
+              "end_date": "17/06/2026",
+              "days": {
+                "Lunes": "08:00-13:00",
+                "Miércoles": "08:00-13:00"
+              },
+              "hours": 10,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "22/06/2026",
+              "end_date": "24/06/2026",
+              "days": {
+                "Lunes": "08:00-13:00",
+                "Miércoles": "08:00-13:00"
+              },
+              "hours": 10,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "29/06/2026",
+              "end_date": "01/07/2026",
+              "days": {
+                "Lunes": "08:00-13:00",
+                "Miércoles": "08:00-13:00"
+              },
+              "hours": 10,
+              "modality": "Virtual"
+            }
+          ]
+        },
+        {
+          "code": "20261602290",
+          "salida": "TECNICO EN CIBERSEGURIDAD",
+          "modalidad": "FORMACION CONTINUA EN CENTRO",
+          "regional": "DIRECCION REGIONAL ORIENTAL",
+          "schedules": [
+            {
+              "materia": "MATEMATICA DISCRETA",
+              "start_date": "28/05/2026",
+              "end_date": "29/05/2026",
+              "days": {
+                "Jueves": "17:00-22:00",
+                "Viernes": "17:00-22:00"
+              },
+              "hours": 10,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "MATEMATICA DISCRETA",
+              "start_date": "01/06/2026",
+              "end_date": "05/06/2026",
+              "days": {
+                "Lunes": "17:00-22:00",
+                "Martes": "17:00-22:00",
+                "Miércoles": "17:00-22:00",
+                "Viernes": "17:00-22:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "MATEMATICA DISCRETA",
+              "start_date": "08/06/2026",
+              "end_date": "08/06/2026",
+              "days": {
+                "Lunes": "17:00-22:00"
+              },
+              "hours": 5,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "ELECTRONICA BASICA Y DIGITAL",
+              "start_date": "09/06/2026",
+              "end_date": "12/06/2026",
+              "days": {
+                "Martes": "17:00-22:00",
+                "Miércoles": "17:00-22:00",
+                "Jueves": "17:00-22:00",
+                "Viernes": "17:00-22:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "ELECTRONICA BASICA Y DIGITAL",
+              "start_date": "15/06/2026",
+              "end_date": "19/06/2026",
+              "days": {
+                "Lunes": "17:00-22:00",
+                "Martes": "17:00-22:00",
+                "Miércoles": "17:00-22:00",
+                "Jueves": "17:00-22:00",
+                "Viernes": "17:00-22:00"
+              },
+              "hours": 25,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "ELECTRONICA BASICA Y DIGITAL",
+              "start_date": "22/06/2026",
+              "end_date": "24/06/2026",
+              "days": {
+                "Lunes": "17:00-22:00",
+                "Martes": "17:00-22:00",
+                "Miércoles": "17:00-22:00"
+              },
+              "hours": 15,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "TECNOLOGIA DE LA INFORMACION (IT)",
+              "start_date": "25/06/2026",
+              "end_date": "26/06/2026",
+              "days": {
+                "Jueves": "17:00-22:00",
+                "Viernes": "17:00-22:00"
+              },
+              "hours": 10,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "TECNOLOGIA DE LA INFORMACION (IT)",
+              "start_date": "29/06/2026",
+              "end_date": "03/07/2026",
+              "days": {
+                "Lunes": "17:00-22:00",
+                "Martes": "17:00-22:00",
+                "Miércoles": "17:00-22:00",
+                "Jueves": "17:00-22:00",
+                "Viernes": "17:00-22:00"
+              },
+              "hours": 25,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "TECNOLOGIA DE LA INFORMACION (IT)",
+              "start_date": "06/07/2026",
+              "end_date": "10/07/2026",
+              "days": {
+                "Lunes": "17:00-22:00",
+                "Martes": "17:00-22:00",
+                "Miércoles": "17:00-22:00",
+                "Jueves": "17:00-22:00",
+                "Viernes": "17:00-22:00"
+              },
+              "hours": 25,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTRODUCCION A LA PROGRAMACION",
+              "start_date": "13/07/2026",
+              "end_date": "17/07/2026",
+              "days": {
+                "Lunes": "17:00-22:00",
+                "Martes": "17:00-22:00",
+                "Miércoles": "17:00-22:00",
+                "Jueves": "17:00-22:00",
+                "Viernes": "17:00-22:00"
+              },
+              "hours": 25,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTRODUCCION A LA PROGRAMACION",
+              "start_date": "20/07/2026",
+              "end_date": "21/07/2026",
+              "days": {
+                "Lunes": "17:00-22:00",
+                "Martes": "17:00-22:00"
+              },
+              "hours": 10,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "ESTRUCTURA DE DATOS Y",
+              "start_date": "22/07/2026",
+              "end_date": "24/07/2026",
+              "days": {
+                "Miércoles": "17:00-22:00",
+                "Jueves": "17:00-22:00",
+                "Viernes": "17:00-22:00"
+              },
+              "hours": 15,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "ESTRUCTURA DE DATOS Y",
+              "start_date": "27/07/2026",
+              "end_date": "30/07/2026",
+              "days": {
+                "Lunes": "17:00-22:00",
+                "Martes": "17:00-22:00",
+                "Miércoles": "17:00-22:00",
+                "Jueves": "17:00-22:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTRODUCCION Y DISENO DE BASE",
+              "start_date": "31/07/2026",
+              "end_date": "31/07/2026",
+              "days": {
+                "Viernes": "17:00-22:00"
+              },
+              "hours": 5,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTRODUCCION Y DISENO DE BASE",
+              "start_date": "03/08/2026",
+              "end_date": "07/08/2026",
+              "days": {
+                "Lunes": "17:00-22:00",
+                "Martes": "17:00-22:00",
+                "Miércoles": "17:00-22:00",
+                "Jueves": "17:00-22:00",
+                "Viernes": "17:00-22:00"
+              },
+              "hours": 25,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTRODUCCION Y DISENO DE BASE",
+              "start_date": "10/08/2026",
+              "end_date": "14/08/2026",
+              "days": {
+                "Lunes": "17:00-22:00",
+                "Martes": "17:00-22:00",
+                "Miércoles": "17:00-22:00",
+                "Jueves": "17:00-22:00",
+                "Viernes": "17:00-22:00"
+              },
+              "hours": 25,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTRODUCCION Y DISENO DE BASE",
+              "start_date": "17/08/2026",
+              "end_date": "18/08/2026",
+              "days": {
+                "Lunes": "17:00-22:00",
+                "Martes": "17:00-22:00"
+              },
+              "hours": 10,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "PROGRAMACION EN LENGUAJE C++",
+              "start_date": "19/08/2026",
+              "end_date": "21/08/2026",
+              "days": {
+                "Miércoles": "17:00-22:00",
+                "Jueves": "17:00-22:00",
+                "Viernes": "17:00-22:00"
+              },
+              "hours": 15,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "PROGRAMACION EN LENGUAJE C++",
+              "start_date": "24/08/2026",
+              "end_date": "28/08/2026",
+              "days": {
+                "Lunes": "17:00-22:00",
+                "Martes": "17:00-22:00",
+                "Miércoles": "17:00-22:00",
+                "Jueves": "17:00-22:00",
+                "Viernes": "17:00-22:00"
+              },
+              "hours": 25,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "PROGRAMACION EN LENGUAJE C++",
+              "start_date": "31/08/2026",
+              "end_date": "31/08/2026",
+              "days": {
+                "Lunes": "17:00-22:00"
+              },
+              "hours": 5,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTRODUCCION A LA PROGRAMACION",
+              "start_date": "01/09/2026",
+              "end_date": "04/09/2026",
+              "days": {
+                "Martes": "17:00-22:00",
+                "Miércoles": "17:00-22:00",
+                "Jueves": "17:00-22:00",
+                "Viernes": "17:00-22:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "INTRODUCCION A LA PROGRAMACION",
+              "start_date": "07/09/2026",
+              "end_date": "10/09/2026",
+              "days": {
+                "Lunes": "17:00-22:00",
+                "Martes": "17:00-22:00",
+                "Miércoles": "17:00-22:00",
+                "Jueves": "17:00-22:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            }
+          ]
+        },
+        {
+          "code": "20261602470",
+          "salida": "INTELIGENCIA ARTIFICIAL PARA",
+          "modalidad": "CAPACITACION PERMANENTE",
+          "regional": "DIRECCION REGIONAL ORIENTAL EMPRENDEDORES",
+          "schedules": [
+            {
+              "materia": "N/A",
+              "start_date": "11/06/2026",
+              "end_date": "14/06/2026",
+              "days": {
+                "Jueves": "08:00-11:00",
+                "Viernes": "08:00-11:00",
+                "Domingo": "08:00-11:00"
+              },
+              "hours": 9,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "16/06/2026",
+              "end_date": "21/06/2026",
+              "days": {
+                "Martes": "08:00-11:00",
+                "Jueves": "08:00-11:00",
+                "Viernes": "08:00-11:00",
+                "Domingo": "08:00-11:00"
+              },
+              "hours": 12,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "23/06/2026",
+              "end_date": "28/06/2026",
+              "days": {
+                "Martes": "08:00-11:00",
+                "Jueves": "08:00-11:00",
+                "Viernes": "08:00-11:00",
+                "Domingo": "08:00-11:00"
+              },
+              "hours": 12,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "30/06/2026",
+              "end_date": "05/07/2026",
+              "days": {
+                "Martes": "08:00-11:00",
+                "Jueves": "08:00-11:00",
+                "Viernes": "08:00-11:00",
+                "Domingo": "08:00-11:00"
+              },
+              "hours": 12,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "07/07/2026",
+              "end_date": "12/07/2026",
+              "days": {
+                "Martes": "08:00-11:00",
+                "Jueves": "08:00-11:00",
+                "Viernes": "08:00-11:00",
+                "Domingo": "08:00-11:00"
+              },
+              "hours": 12,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "14/07/2026",
+              "end_date": "14/07/2026",
+              "days": {
+                "Martes": "08:00-11:00"
+              },
+              "hours": 3,
+              "modality": "Virtual"
+            }
+          ]
+        },
+        {
+          "code": "20261603138",
+          "salida": "INNOVACION Y TRANSFORMACIÓN DIGITAL",
+          "modalidad": "CAPACITACION PERMANENTE",
+          "regional": "DIRECCION REGIONAL ORIENTAL",
+          "schedules": [
+            {
+              "materia": "N/A",
+              "start_date": "09/07/2026",
+              "end_date": "10/07/2026",
+              "days": {
+                "Jueves": "11:00-13:00",
+                "Viernes": "11:00-13:00"
+              },
+              "hours": 4,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "13/07/2026",
+              "end_date": "14/07/2026",
+              "days": {
+                "Lunes": "10:00-13:00",
+                "Martes": "11:00-13:00"
+              },
+              "hours": 5,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "15/07/2026",
+              "end_date": "17/07/2026",
+              "days": {
+                "Miércoles": "08:00-11:00",
+                "Jueves": "08:00-11:00",
+                "Viernes": "08:00-11:00"
+              },
+              "hours": 9,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "20/07/2026",
+              "end_date": "24/07/2026",
+              "days": {
+                "Lunes": "08:00-11:00",
+                "Martes": "08:00-11:00",
+                "Miércoles": "08:00-11:00",
+                "Jueves": "08:00-11:00",
+                "Viernes": "08:00-11:00"
+              },
+              "hours": 15,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "27/07/2026",
+              "end_date": "31/07/2026",
+              "days": {
+                "Lunes": "08:00-11:00",
+                "Martes": "08:00-11:00",
+                "Miércoles": "08:00-11:00",
+                "Jueves": "08:00-11:00",
+                "Viernes": "08:00-11:00"
+              },
+              "hours": 15,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "03/08/2026",
+              "end_date": "06/08/2026",
+              "days": {
+                "Lunes": "08:00-11:00",
+                "Martes": "08:00-11:00",
+                "Miércoles": "08:00-11:00",
+                "Jueves": "08:00-11:00"
+              },
+              "hours": 12,
+              "modality": "Presencial"
+            }
+          ]
+        },
+        {
+          "code": "20261603067",
+          "salida": "INTELIGENCIA ARTIFICIAL",
+          "modalidad": "CAPACITACION PERMANENTE",
+          "regional": "DIRECCION REGIONAL ORIENTAL",
+          "schedules": [
+            {
+              "materia": "N/A",
+              "start_date": "22/07/2026",
+              "end_date": "24/07/2026",
+              "days": {
+                "Miércoles": "11:00-13:00",
+                "Jueves": "11:00-13:00",
+                "Viernes": "11:00-13:00"
+              },
+              "hours": 6,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "27/07/2026",
+              "end_date": "31/07/2026",
+              "days": {
+                "Lunes": "11:00-13:00",
+                "Martes": "11:00-13:00",
+                "Miércoles": "11:00-13:00",
+                "Jueves": "11:00-13:00",
+                "Viernes": "11:00-13:00"
+              },
+              "hours": 10,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "03/08/2026",
+              "end_date": "07/08/2026",
+              "days": {
+                "Lunes": "11:00-13:00",
+                "Martes": "11:00-13:00",
+                "Miércoles": "11:00-13:00",
+                "Jueves": "11:00-13:00",
+                "Viernes": "11:00-13:00"
+              },
+              "hours": 10,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "10/08/2026",
+              "end_date": "14/08/2026",
+              "days": {
+                "Lunes": "11:00-13:00",
+                "Martes": "11:00-13:00",
+                "Miércoles": "11:00-13:00",
+                "Jueves": "11:00-13:00",
+                "Viernes": "11:00-13:00"
+              },
+              "hours": 10,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "17/08/2026",
+              "end_date": "21/08/2026",
+              "days": {
+                "Lunes": "11:00-13:00",
+                "Martes": "11:00-13:00",
+                "Miércoles": "11:00-13:00",
+                "Jueves": "11:00-13:00",
+                "Viernes": "11:00-13:00"
+              },
+              "hours": 10,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "24/08/2026",
+              "end_date": "28/08/2026",
+              "days": {
+                "Lunes": "11:00-13:00",
+                "Martes": "11:00-13:00",
+                "Miércoles": "11:00-13:00",
+                "Jueves": "11:00-13:00",
+                "Viernes": "11:00-13:00"
+              },
+              "hours": 10,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "31/08/2026",
+              "end_date": "01/09/2026",
+              "days": {
+                "Lunes": "11:00-13:00",
+                "Martes": "11:00-13:00"
+              },
+              "hours": 4,
+              "modality": "Virtual"
+            }
+          ]
+        },
+        {
+          "code": "20261801675",
+          "salida": "EXCEL BÁSICO",
+          "modalidad": "CAPACITACION PERMANENTE",
+          "regional": "DIRECCION REGIONAL VALDESIA",
+          "schedules": [
+            {
+              "materia": "N/A",
+              "start_date": "01/08/2026",
+              "end_date": "02/08/2026",
+              "days": {
+                "Sábado": "18:00-22:00",
+                "Domingo": "18:00-22:00"
+              },
+              "hours": 8,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "08/08/2026",
+              "end_date": "09/08/2026",
+              "days": {
+                "Sábado": "18:00-22:00",
+                "Domingo": "18:00-22:00"
+              },
+              "hours": 8,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "15/08/2026",
+              "end_date": "15/08/2026",
+              "days": {
+                "Sábado": "18:00-22:00"
+              },
+              "hours": 4,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "22/08/2026",
+              "end_date": "23/08/2026",
+              "days": {
+                "Sábado": "18:00-22:00",
+                "Domingo": "18:00-22:00"
+              },
+              "hours": 8,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "29/08/2026",
+              "end_date": "29/08/2026",
+              "days": {
+                "Sábado": "18:00-20:00"
+              },
+              "hours": 2,
+              "modality": "Presencial"
+            }
+          ]
+        },
+        {
+          "code": "20261603660",
+          "salida": "INTELIGENCIA ARTIFICIAL APLICADA AL",
+          "modalidad": "CAPACITACION PERMANENTE",
+          "regional": "DIRECCION REGIONAL ORIENTAL MARKETING DIGITAL",
+          "schedules": [
+            {
+              "materia": "N/A",
+              "start_date": "10/08/2026",
+              "end_date": "15/08/2026",
+              "days": {
+                "Lunes": "08:00-10:00",
+                "Martes": "08:00-10:00",
+                "Miércoles": "08:00-10:00",
+                "Jueves": "08:00-10:00",
+                "Viernes": "08:00-10:00",
+                "Sábado": "08:00-10:00"
+              },
+              "hours": 12,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "17/08/2026",
+              "end_date": "23/08/2026",
+              "days": {
+                "Lunes": "08:00-10:00",
+                "Martes": "08:00-10:00",
+                "Miércoles": "08:00-10:00",
+                "Jueves": "08:00-10:00",
+                "Viernes": "08:00-10:00",
+                "Sábado": "08:00-10:00",
+                "Domingo": "08:00-10:00"
+              },
+              "hours": 14,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "24/08/2026",
+              "end_date": "30/08/2026",
+              "days": {
+                "Lunes": "08:00-10:00",
+                "Martes": "08:00-10:00",
+                "Miércoles": "08:00-10:00",
+                "Jueves": "08:00-10:00",
+                "Viernes": "08:00-10:00",
+                "Sábado": "08:00-10:00",
+                "Domingo": "08:00-10:00"
+              },
+              "hours": 14,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "31/08/2026",
+              "end_date": "06/09/2026",
+              "days": {
+                "Lunes": "08:00-10:00",
+                "Martes": "08:00-10:00",
+                "Miércoles": "08:00-10:00",
+                "Jueves": "08:00-10:00",
+                "Viernes": "08:00-10:00",
+                "Sábado": "08:00-10:00",
+                "Domingo": "08:00-10:00"
+              },
+              "hours": 14,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "07/09/2026",
+              "end_date": "08/09/2026",
+              "days": {
+                "Lunes": "08:00-11:00",
+                "Martes": "08:00-11:00"
+              },
+              "hours": 6,
+              "modality": "Virtual"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "facilitator_name": "RUTH ADIBELL UCETA PACHECO",
       "facilitator_doc": "402-2306995-2",
       "courses": [
@@ -1327,6 +2766,49 @@ const SCHEDULE_DATABASE = {
                 "Jueves": "13:00-14:00",
                 "Viernes": "13:00-14:00",
                 "Sábado": "13:00-14:00"
+              },
+              "hours": 6,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "18/08/2026",
+              "end_date": "23/08/2026",
+              "days": {
+                "Martes": "18:00-20:00",
+                "Miércoles": "18:00-20:00",
+                "Jueves": "18:00-20:00",
+                "Viernes": "18:00-20:00",
+                "Sábado": "18:00-20:00",
+                "Domingo": "18:00-20:00"
+              },
+              "hours": 12,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "07/09/2026",
+              "end_date": "13/09/2026",
+              "days": {
+                "Lunes": "18:00-20:00",
+                "Martes": "18:00-20:00",
+                "Miércoles": "18:00-20:00",
+                "Jueves": "18:00-20:00",
+                "Viernes": "18:00-20:00",
+                "Sábado": "18:00-20:00",
+                "Domingo": "18:00-20:00"
+              },
+              "hours": 14,
+              "modality": "Virtual"
+            },
+            {
+              "materia": "N/A",
+              "start_date": "14/09/2026",
+              "end_date": "16/09/2026",
+              "days": {
+                "Lunes": "18:00-20:00",
+                "Martes": "18:00-20:00",
+                "Miércoles": "18:00-20:00"
               },
               "hours": 6,
               "modality": "Virtual"

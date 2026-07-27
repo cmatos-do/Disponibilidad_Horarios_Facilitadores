@@ -79,16 +79,20 @@
                 </h3>
                 <p class="text-xs text-slate-400">Busca o selecciona un facilitador de la lista para cargar su disponibilidad completa.</p>
             </div>
-            <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-                <div class="relative flex-1 sm:w-80">
+            <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto md:items-center">
+                <div class="relative flex-1 sm:w-64">
                     <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
                     </span>
-                    <input type="text" id="facilitator-search" oninput="filterFacilitators()" placeholder="Buscar facilitador por nombre..." class="w-full pl-9 pr-4 py-2 rounded-lg border border-slate-200 bg-slate-50 text-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none">
+                    <input type="text" id="facilitator-search" oninput="filterFacilitators()" placeholder="Buscar..." class="w-full pl-9 pr-4 py-2 rounded-lg border border-slate-200 bg-slate-50 text-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none">
                 </div>
-                <select id="facilitator-selector" onchange="onFacilitatorChange()" class="rounded-lg border-slate-200 bg-slate-50 py-2 px-3 text-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none border font-semibold text-slate-700">
+                <select id="facilitator-selector" onchange="onFacilitatorChange()" class="rounded-lg border-slate-200 bg-slate-50 py-2 px-3 text-sm focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none border font-semibold text-slate-700 max-w-xs">
                     <!-- Dynamic facilitator options -->
                 </select>
+                <button id="btn-toggle-gaps-top" onclick="toggleGapsView()" class="py-2 px-4 rounded-lg text-sm font-bold transition flex items-center gap-2 border border-emerald-200 bg-emerald-50 text-emerald-800 hover:bg-emerald-100 shadow-sm whitespace-nowrap">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span>Ver Disponibilidad (Huecos)</span>
+                </button>
             </div>
         </section>
 
@@ -510,11 +514,21 @@
         // Toggle availability gaps view handler
         function toggleGapsView() {
             showGapsOnly = !showGapsOnly;
-            const btn = document.getElementById('btn-toggle-gaps');
+            const btnSidebar = document.getElementById('btn-toggle-gaps');
+            const btnTop = document.getElementById('btn-toggle-gaps-top');
 
             if (showGapsOnly) {
-                btn.className = "w-full py-2.5 px-4 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 border border-indigo-200 bg-indigo-600 text-white shadow-md";
-                btn.innerHTML = `<i class="fa-solid fa-clock-rotate-left"></i> <span>Ver Clases Asignadas</span>`;
+                const activeSidebarClass = "w-full py-2.5 px-4 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 border border-indigo-200 bg-indigo-600 text-white shadow-md";
+                const activeTopClass = "py-2 px-4 rounded-lg text-sm font-bold transition flex items-center gap-2 border border-indigo-200 bg-indigo-600 text-white shadow-md whitespace-nowrap";
+
+                if (btnSidebar) {
+                    btnSidebar.className = activeSidebarClass;
+                    btnSidebar.innerHTML = `<i class="fa-solid fa-clock-rotate-left"></i> <span>Ver Clases Asignadas</span>`;
+                }
+                if (btnTop) {
+                    btnTop.className = activeTopClass;
+                    btnTop.innerHTML = `<i class="fa-solid fa-clock-rotate-left"></i> <span>Ver Clases Asignadas</span>`;
+                }
 
                 // Update text instructions to make it very clear
                 document.getElementById('calendar-header-title').innerText = "Horarios Libres / Huecos Disponibles";
@@ -522,8 +536,17 @@
                 document.getElementById('weekly-header-title').innerText = "Matriz de Huecos y Horarios Disponibles";
                 document.getElementById('weekly-header-desc').innerText = "Destacando en verde brillante los bloques semanales totalmente disponibles.";
             } else {
-                btn.className = "w-full py-2.5 px-4 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 border border-emerald-200 bg-emerald-50 text-emerald-800 hover:bg-emerald-100/70 shadow-sm";
-                btn.innerHTML = `<i class="fa-solid fa-clock-rotate-left"></i> <span>Ver Horarios Disponibles (Huecos)</span>`;
+                const inactiveSidebarClass = "w-full py-2.5 px-4 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 border border-emerald-200 bg-emerald-50 text-emerald-800 hover:bg-emerald-100/70 shadow-sm";
+                const inactiveTopClass = "py-2 px-4 rounded-lg text-sm font-bold transition flex items-center gap-2 border border-emerald-200 bg-emerald-50 text-emerald-800 hover:bg-emerald-100 shadow-sm whitespace-nowrap";
+
+                if (btnSidebar) {
+                    btnSidebar.className = inactiveSidebarClass;
+                    btnSidebar.innerHTML = `<i class="fa-solid fa-clock-rotate-left"></i> <span>Ver Horarios Disponibles (Huecos)</span>`;
+                }
+                if (btnTop) {
+                    btnTop.className = inactiveTopClass;
+                    btnTop.innerHTML = `<i class="fa-solid fa-clock-rotate-left"></i> <span>Ver Disponibilidad (Huecos)</span>`;
+                }
 
                 document.getElementById('calendar-header-title').innerText = "Agenda Mensual / Diaria";
                 document.getElementById('calendar-header-desc').innerText = "Visualiza exactamente los días asignados y haz clic en un evento para detalles completos.";

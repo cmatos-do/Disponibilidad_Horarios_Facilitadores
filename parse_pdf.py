@@ -207,7 +207,7 @@ def parse_single_pdf(pdf_path):
 
 def main():
     horarios_dir = 'horarios'
-    facilitators_list = []
+    facilitators_dict = {}
 
     if os.path.exists(horarios_dir):
         files = [f for f in os.listdir(horarios_dir) if f.lower().endswith('.pdf')]
@@ -216,13 +216,30 @@ def main():
             pdf_path = os.path.join(horarios_dir, filename)
             try:
                 data = parse_single_pdf(pdf_path)
-                facilitators_list.append(data)
+                key = data['facilitator_doc'] if data['facilitator_doc'] != "Desconocido" else data['facilitator_name']
+                if key in facilitators_dict:
+                    existing_courses = facilitators_dict[key]['courses']
+                    for new_course in data['courses']:
+                        existing_course = next((c for c in existing_courses if c['code'] == new_course['code']), None)
+                        if existing_course:
+                            for new_sched in new_course['schedules']:
+                                dup = False
+                                for ext_sched in existing_course['schedules']:
+                                    if ext_sched['materia'] == new_sched['materia'] and ext_sched['start_date'] == new_sched['start_date'] and ext_sched['end_date'] == new_sched['end_date']:
+                                        dup = True
+                                        break
+                                if not dup:
+                                    existing_course['schedules'].append(new_sched)
+                        else:
+                            existing_courses.append(new_course)
+                else:
+                    facilitators_dict[key] = data
                 print(f"Successfully parsed {filename} ({data['facilitator_name']})")
             except Exception as e:
                 print(f"Error parsing {filename}: {e}")
 
     output_schema = {
-        'facilitators': facilitators_list
+        'facilitators': list(facilitators_dict.values())
     }
 
     # Save as JSON

@@ -22,6 +22,12 @@ class AutoUpdateHandler(SimpleHTTPRequestHandler):
             print(f"Error compiling PDFs on GET trigger: {e}")
         return super().do_GET()
 
+    def end_headers(self):
+        self.send_header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
+        self.send_header('Pragma', 'no-cache')
+        self.send_header('Expires', '0')
+        super().end_headers()
+
 # Track last modified times of files inside the watched directory
 last_state = {}
 
