@@ -434,6 +434,34 @@
             return `${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`;
         }
 
+        function formatHour12h(timeStr) {
+            const [hStr, mStr] = timeStr.split(':');
+            const h = parseInt(hStr);
+            const m = parseInt(mStr);
+            const ampm = h >= 12 ? 'pm' : 'am';
+            let hour12 = h % 12;
+            if (hour12 === 0) hour12 = 12;
+
+            if (m !== 0) {
+                return `${hour12}:${String(m).padStart(2, '0')} ${ampm}`;
+            }
+            return `${hour12} ${ampm}`;
+        }
+
+        function getDurationText(start, end) {
+            const [h1, m1] = start.split(':').map(Number);
+            const [h2, m2] = end.split(':').map(Number);
+            const diffMin = (h2 * 60 + m2) - (h1 * 60 + m1);
+            const diffHrs = diffMin / 60;
+            if (diffHrs === 1) {
+                return "1 hora";
+            }
+            if (diffHrs % 1 === 0) {
+                return `${diffHrs} horas`;
+            }
+            return `${diffHrs} horas`;
+        }
+
         // Helper to get active facilitator start and end bounds
         function getFacilitatorDateBounds(courses) {
             let minDate = null;
@@ -846,8 +874,12 @@
                             const dy = String(d.getDate()).padStart(2, '0');
                             const dateStr = `${yr}-${mo}-${dy}`;
 
+                            const start12 = formatHour12h(block.start);
+                            const end12 = formatHour12h(block.end);
+                            const dur = getDurationText(block.start, block.end);
+
                             events.push({
-                                title: `Disponible (${block.start}-${block.end})`,
+                                title: `Disponible de ${start12} a ${end12} (${dur})`,
                                 start: `${dateStr}T${block.start}:00`,
                                 end: `${dateStr}T${block.end}:00`,
                                 color: '#10b981',
@@ -893,7 +925,6 @@
                     center: 'title',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay'
                 },
-                initialDate: initialDateStr,
                 events: events,
                 eventClick: function(info) {
                     if (info.event.extendedProps.isGap) return; // ignore gap clicks
@@ -1018,8 +1049,14 @@
                         if (matches.length === 0) {
                             tdDay.className = "p-3 text-xs border-r border-slate-100 relative min-w-[120px] bg-emerald-50/50";
                             tdDay.innerHTML = `
-                                <div class="rounded px-2.5 py-1.5 border border-emerald-300 bg-emerald-50 text-emerald-800 text-[10px] font-bold shadow-sm flex items-center gap-1">
-                                    <i class="fa-solid fa-circle-check text-emerald-600"></i> Disponible
+                                <div class="rounded px-2 py-1.5 border border-emerald-300 bg-emerald-50 text-emerald-800 text-[10px] font-bold shadow-sm space-y-0.5">
+                                    <div class="flex items-center gap-1">
+                                        <i class="fa-solid fa-circle-check text-emerald-600"></i>
+                                        <span>Disponible</span>
+                                    </div>
+                                    <div class="text-[9px] text-emerald-700 font-semibold leading-tight">
+                                        de ${formatHour12h(block.start)} a ${formatHour12h(block.end)} (${getDurationText(block.start, block.end)})
+                                    </div>
                                 </div>
                             `;
                         } else {

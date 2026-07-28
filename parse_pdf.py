@@ -210,10 +210,13 @@ def main():
     facilitators_dict = {}
 
     if os.path.exists(horarios_dir):
-        files = [f for f in os.listdir(horarios_dir) if f.lower().endswith('.pdf')]
-        print(f"Found PDF files: {files}")
-        for filename in files:
-            pdf_path = os.path.join(horarios_dir, filename)
+        pdf_files = []
+        for root, dirs, files in os.walk(horarios_dir):
+            for filename in files:
+                if filename.lower().endswith('.pdf'):
+                    pdf_files.append(os.path.join(root, filename))
+        print(f"Found PDF files: {pdf_files}")
+        for pdf_path in pdf_files:
             try:
                 data = parse_single_pdf(pdf_path)
                 key = data['facilitator_doc'] if data['facilitator_doc'] != "Desconocido" else data['facilitator_name']
@@ -234,9 +237,9 @@ def main():
                             existing_courses.append(new_course)
                 else:
                     facilitators_dict[key] = data
-                print(f"Successfully parsed {filename} ({data['facilitator_name']})")
+                print(f"Successfully parsed {pdf_path} ({data['facilitator_name']})")
             except Exception as e:
-                print(f"Error parsing {filename}: {e}")
+                print(f"Error parsing {pdf_path}: {e}")
 
     output_schema = {
         'facilitators': list(facilitators_dict.values())

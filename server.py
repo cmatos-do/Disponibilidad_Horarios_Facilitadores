@@ -34,10 +34,11 @@ last_state = {}
 def get_directory_state():
     state = {}
     if os.path.exists(DIRECTORY_TO_WATCH):
-        for f in os.listdir(DIRECTORY_TO_WATCH):
-            path = os.path.join(DIRECTORY_TO_WATCH, f)
-            if os.path.isfile(path) and f.lower().endswith('.pdf'):
-                state[f] = os.path.getmtime(path)
+        for root, dirs, files in os.walk(DIRECTORY_TO_WATCH):
+            for f in files:
+                if f.lower().endswith('.pdf'):
+                    path = os.path.join(root, f)
+                    state[path] = os.path.getmtime(path)
     return state
 
 def check_and_recompile(force=False):
