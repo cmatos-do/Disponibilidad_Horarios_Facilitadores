@@ -1,6 +1,1055 @@
 const SCHEDULE_DATABASE = {
   "facilitators": [
     {
+      "facilitator_name": "GLORIA SORINEL MONEGRO CERDA",
+      "facilitator_doc": "223-0070529-4",
+      "courses": [
+        {
+          "code": "20261601212",
+          "salida": "CUIDADOS Y ATENCION A PERSONAS ADULTAS",
+          "modalidad": "HABILITACION",
+          "regional": "DIRECCION REGIONAL ORIENTAL MAYORES",
+          "schedules": [
+            {
+              "materia": "NOCIONES GENERALES PARA EL",
+              "start_date": "06/04/2026",
+              "end_date": "09/04/2026",
+              "days": {
+                "Lunes": "18:00-22:00",
+                "Martes": "18:00-22:00",
+                "Miércoles": "18:00-22:00",
+                "Jueves": "18:00-21:00"
+              },
+              "hours": 15,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "MOVILIDAD Y SEGURIDAD EN LA",
+              "start_date": "10/04/2026",
+              "end_date": "10/04/2026",
+              "days": {
+                "Viernes": "18:00-22:00"
+              },
+              "hours": 4,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "MOVILIDAD Y SEGURIDAD EN LA",
+              "start_date": "13/04/2026",
+              "end_date": "17/04/2026",
+              "days": {
+                "Lunes": "18:00-22:00",
+                "Martes": "18:00-22:00",
+                "Miércoles": "18:00-22:00",
+                "Jueves": "18:00-22:00",
+                "Viernes": "18:00-22:00"
+              },
+              "hours": 20,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "MOVILIDAD Y SEGURIDAD EN LA",
+              "start_date": "20/04/2026",
+              "end_date": "23/04/2026",
+              "days": {
+                "Lunes": "18:00-22:00",
+                "Martes": "18:00-22:00",
+                "Miércoles": "18:00-22:00",
+                "Jueves": "18:00-22:00"
+              },
+              "hours": 16,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "SERVICIOS DE ALIMENTACION E",
+              "start_date": "24/04/2026",
+              "end_date": "24/04/2026",
+              "days": {
+                "Viernes": "18:00-22:00"
+              },
+              "hours": 4,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "SERVICIOS DE ALIMENTACION E",
+              "start_date": "27/04/2026",
+              "end_date": "01/05/2026",
+              "days": {
+                "Lunes": "18:00-22:00",
+                "Martes": "18:00-22:00",
+                "Miércoles": "18:00-22:00",
+                "Jueves": "18:00-22:00",
+                "Viernes": "18:00-22:00"
+              },
+              "hours": 20,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "SERVICIOS DE ALIMENTACION E",
+              "start_date": "05/05/2026",
+              "end_date": "06/05/2026",
+              "days": {
+                "Martes": "18:00-22:00",
+                "Miércoles": "18:00-20:00"
+              },
+              "hours": 6,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "MANTENCION DE HIGIENE PERSONAL",
+              "start_date": "07/05/2026",
+              "end_date": "08/05/2026",
+              "days": {
+                "Jueves": "18:00-22:00",
+                "Viernes": "18:00-22:00"
+              },
+              "hours": 8,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "MANTENCION DE HIGIENE PERSONAL",
+              "start_date": "11/05/2026",
+              "end_date": "15/05/2026",
+              "days": {
+                "Lunes": "18:00-22:00",
+                "Martes": "18:00-22:00",
+                "Miércoles": "18:00-22:00",
+                "Jueves": "18:00-22:00",
+                "Viernes": "18:00-22:00"
+              },
+              "hours": 20,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "MANTENCION DE HIGIENE PERSONAL",
+              "start_date": "18/05/2026",
+              "end_date": "22/05/2026",
+              "days": {
+                "Lunes": "18:00-22:00",
+                "Martes": "18:00-22:00",
+                "Miércoles": "18:00-22:00",
+                "Jueves": "18:00-22:00",
+                "Viernes": "18:00-19:00"
+              },
+              "hours": 17,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "ATENCIONES BASICAS DE SALUD",
+              "start_date": "25/05/2026",
+              "end_date": "29/05/2026",
+              "days": {
+                "Lunes": "18:00-22:00",
+                "Martes": "18:00-22:00",
+                "Miércoles": "18:00-22:00",
+                "Jueves": "18:00-22:00",
+                "Viernes": "18:00-22:00"
+              },
+              "hours": 20,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "ATENCIONES BASICAS DE SALUD",
+              "start_date": "01/06/2026",
+              "end_date": "05/06/2026",
+              "days": {
+                "Lunes": "18:00-22:00",
+                "Martes": "18:00-22:00",
+                "Miércoles": "18:00-22:00",
+                "Viernes": "18:00-22:00"
+              },
+              "hours": 16,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "ATENCIONES BASICAS DE SALUD",
+              "start_date": "08/06/2026",
+              "end_date": "10/06/2026",
+              "days": {
+                "Lunes": "18:00-22:00",
+                "Martes": "18:00-22:00",
+                "Miércoles": "18:00-19:00"
+              },
+              "hours": 9,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "ACTIVIDADES DE DESARROLLO",
+              "start_date": "11/06/2026",
+              "end_date": "12/06/2026",
+              "days": {
+                "Jueves": "18:00-22:00",
+                "Viernes": "18:00-22:00"
+              },
+              "hours": 8,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "ACTIVIDADES DE DESARROLLO",
+              "start_date": "15/06/2026",
+              "end_date": "19/06/2026",
+              "days": {
+                "Lunes": "18:00-22:00",
+                "Martes": "18:00-22:00",
+                "Miércoles": "18:00-22:00",
+                "Jueves": "18:00-22:00",
+                "Viernes": "18:00-19:00"
+              },
+              "hours": 17,
+              "modality": "Presencial"
+            }
+          ]
+        },
+        {
+          "code": "20261601211",
+          "salida": "CUIDADOS Y ATENCION A PERSONAS ADULTAS",
+          "modalidad": "HABILITACION",
+          "regional": "DIRECCION REGIONAL ORIENTAL MAYORES",
+          "schedules": [
+            {
+              "materia": "NOCIONES GENERALES PARA EL",
+              "start_date": "11/04/2026",
+              "end_date": "12/04/2026",
+              "days": {
+                "Sábado": "08:00-18:00",
+                "Domingo": "08:00-13:00"
+              },
+              "hours": 15,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "MOVILIDAD Y SEGURIDAD EN LA",
+              "start_date": "18/04/2026",
+              "end_date": "19/04/2026",
+              "days": {
+                "Sábado": "08:00-18:00",
+                "Domingo": "08:00-18:00"
+              },
+              "hours": 20,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "MOVILIDAD Y SEGURIDAD EN LA",
+              "start_date": "25/04/2026",
+              "end_date": "26/04/2026",
+              "days": {
+                "Sábado": "08:00-18:00",
+                "Domingo": "08:00-18:00"
+              },
+              "hours": 20,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "SERVICIOS DE ALIMENTACION E",
+              "start_date": "02/05/2026",
+              "end_date": "03/05/2026",
+              "days": {
+                "Sábado": "08:00-18:00",
+                "Domingo": "08:00-18:00"
+              },
+              "hours": 20,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "SERVICIOS DE ALIMENTACION E",
+              "start_date": "09/05/2026",
+              "end_date": "09/05/2026",
+              "days": {
+                "Sábado": "08:00-18:00"
+              },
+              "hours": 10,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "MANTENCION DE HIGIENE PERSONAL",
+              "start_date": "10/05/2026",
+              "end_date": "10/05/2026",
+              "days": {
+                "Domingo": "08:00-18:00"
+              },
+              "hours": 10,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "MANTENCION DE HIGIENE PERSONAL",
+              "start_date": "16/05/2026",
+              "end_date": "17/05/2026",
+              "days": {
+                "Sábado": "08:00-18:00",
+                "Domingo": "08:00-18:00"
+              },
+              "hours": 20,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "MANTENCION DE HIGIENE PERSONAL",
+              "start_date": "23/05/2026",
+              "end_date": "24/05/2026",
+              "days": {
+                "Sábado": "08:00-18:00",
+                "Domingo": "08:00-13:00"
+              },
+              "hours": 15,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "ATENCIONES BASICAS DE SALUD",
+              "start_date": "30/05/2026",
+              "end_date": "31/05/2026",
+              "days": {
+                "Sábado": "08:00-18:00",
+                "Domingo": "08:00-18:00"
+              },
+              "hours": 20,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "ATENCIONES BASICAS DE SALUD",
+              "start_date": "06/06/2026",
+              "end_date": "07/06/2026",
+              "days": {
+                "Sábado": "08:00-18:00",
+                "Domingo": "08:00-18:00"
+              },
+              "hours": 20,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "ATENCIONES BASICAS DE SALUD",
+              "start_date": "13/06/2026",
+              "end_date": "13/06/2026",
+              "days": {
+                "Sábado": "08:00-13:00"
+              },
+              "hours": 5,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "ACTIVIDADES DE DESARROLLO",
+              "start_date": "14/06/2026",
+              "end_date": "14/06/2026",
+              "days": {
+                "Domingo": "08:00-18:00"
+              },
+              "hours": 10,
+              "modality": "Presencial"
+            },
+            {
+              "materia": "ACTIVIDADES DE DESARROLLO",
+              "start_date": "20/06/2026",
+              "end_date": "21/06/2026",
+              "days": {
+                "Sábado": "08:00-18:00",
+                "Domingo": "08:00-13:00"
+              },
+              "hours": 15,
+              "modality": "Presencial"
+            }
+          ]
+        },
+        {
+          "code": "20261601476",
+          "salida": "CUIDADOS Y ATENCION A PERSONAS ADULTAS",
+          "modalidad": "HABILITACION",
+          "regional": "DIRECCION REGIONAL ORIENTAL MAYORES",
+          "schedules": [
+            {
+              "materia": "NOCIONES GENERALES PARA EL",
+              "start_date": "30/04/2026",
+              "end_date": "01/05/2026",
+              "days": {
+                "Jueves": "08:00-13:00",
+                "Viernes": "08:00-13:00"
+              },
+              "hours": 10,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "NOCIONES GENERALES PARA EL",
+              "start_date": "05/05/2026",
+              "end_date": "05/05/2026",
+              "days": {
+                "Martes": "08:00-13:00"
+              },
+              "hours": 5,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "MOVILIDAD Y SEGURIDAD EN LA",
+              "start_date": "06/05/2026",
+              "end_date": "08/05/2026",
+              "days": {
+                "Miércoles": "08:00-13:00",
+                "Jueves": "08:00-13:00",
+                "Viernes": "08:00-13:00"
+              },
+              "hours": 15,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "MOVILIDAD Y SEGURIDAD EN LA",
+              "start_date": "11/05/2026",
+              "end_date": "15/05/2026",
+              "days": {
+                "Lunes": "08:00-13:00",
+                "Martes": "08:00-13:00",
+                "Miércoles": "08:00-13:00",
+                "Jueves": "08:00-13:00",
+                "Viernes": "08:00-13:00"
+              },
+              "hours": 25,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "SERVICIOS DE ALIMENTACION E",
+              "start_date": "18/05/2026",
+              "end_date": "22/05/2026",
+              "days": {
+                "Lunes": "08:00-13:00",
+                "Martes": "08:00-13:00",
+                "Miércoles": "08:00-13:00",
+                "Jueves": "08:00-13:00",
+                "Viernes": "08:00-13:00"
+              },
+              "hours": 25,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "SERVICIOS DE ALIMENTACION E",
+              "start_date": "25/05/2026",
+              "end_date": "25/05/2026",
+              "days": {
+                "Lunes": "08:00-13:00"
+              },
+              "hours": 5,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "MANTENCION DE HIGIENE PERSONAL",
+              "start_date": "26/05/2026",
+              "end_date": "29/05/2026",
+              "days": {
+                "Martes": "08:00-13:00",
+                "Miércoles": "08:00-13:00",
+                "Jueves": "08:00-13:00",
+                "Viernes": "08:00-13:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "MANTENCION DE HIGIENE PERSONAL",
+              "start_date": "01/06/2026",
+              "end_date": "05/06/2026",
+              "days": {
+                "Lunes": "08:00-13:00",
+                "Martes": "08:00-13:00",
+                "Miércoles": "08:00-13:00",
+                "Viernes": "08:00-13:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "MANTENCION DE HIGIENE PERSONAL",
+              "start_date": "08/06/2026",
+              "end_date": "08/06/2026",
+              "days": {
+                "Lunes": "08:00-13:00"
+              },
+              "hours": 5,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "ATENCIONES BASICAS DE SALUD",
+              "start_date": "09/06/2026",
+              "end_date": "12/06/2026",
+              "days": {
+                "Martes": "08:00-13:00",
+                "Miércoles": "08:00-13:00",
+                "Jueves": "08:00-13:00",
+                "Viernes": "08:00-13:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "ATENCIONES BASICAS DE SALUD",
+              "start_date": "15/06/2026",
+              "end_date": "19/06/2026",
+              "days": {
+                "Lunes": "08:00-13:00",
+                "Martes": "08:00-13:00",
+                "Miércoles": "08:00-13:00",
+                "Jueves": "08:00-13:00",
+                "Viernes": "08:00-13:00"
+              },
+              "hours": 25,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "ACTIVIDADES DE DESARROLLO",
+              "start_date": "22/06/2026",
+              "end_date": "26/06/2026",
+              "days": {
+                "Lunes": "08:00-13:00",
+                "Martes": "08:00-13:00",
+                "Miércoles": "08:00-13:00",
+                "Jueves": "08:00-13:00",
+                "Viernes": "08:00-13:00"
+              },
+              "hours": 25,
+              "modality": "Semipresencial"
+            }
+          ]
+        },
+        {
+          "code": "20261602200",
+          "salida": "CUIDADOS Y ATENCION A PERSONAS ADULTAS",
+          "modalidad": "HABILITACION",
+          "regional": "DIRECCION REGIONAL ORIENTAL MAYORES",
+          "schedules": [
+            {
+              "materia": "NOCIONES GENERALES PARA EL",
+              "start_date": "27/05/2026",
+              "end_date": "29/05/2026",
+              "days": {
+                "Miércoles": "14:00-17:00",
+                "Jueves": "14:00-17:00",
+                "Viernes": "14:00-17:00"
+              },
+              "hours": 9,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "NOCIONES GENERALES PARA EL",
+              "start_date": "01/06/2026",
+              "end_date": "02/06/2026",
+              "days": {
+                "Lunes": "14:00-17:00",
+                "Martes": "14:00-17:00"
+              },
+              "hours": 6,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "MOVILIDAD Y SEGURIDAD EN LA",
+              "start_date": "03/06/2026",
+              "end_date": "05/06/2026",
+              "days": {
+                "Miércoles": "14:00-18:00",
+                "Viernes": "14:00-18:00"
+              },
+              "hours": 8,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "MOVILIDAD Y SEGURIDAD EN LA",
+              "start_date": "08/06/2026",
+              "end_date": "12/06/2026",
+              "days": {
+                "Lunes": "14:00-18:00",
+                "Martes": "14:00-18:00",
+                "Miércoles": "14:00-18:00",
+                "Jueves": "14:00-18:00",
+                "Viernes": "14:00-18:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "MOVILIDAD Y SEGURIDAD EN LA",
+              "start_date": "15/06/2026",
+              "end_date": "17/06/2026",
+              "days": {
+                "Lunes": "14:00-18:00",
+                "Martes": "14:00-18:00",
+                "Miércoles": "14:00-18:00"
+              },
+              "hours": 12,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "SERVICIOS DE ALIMENTACION E",
+              "start_date": "18/06/2026",
+              "end_date": "19/06/2026",
+              "days": {
+                "Jueves": "14:00-18:00",
+                "Viernes": "14:00-18:00"
+              },
+              "hours": 8,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "SERVICIOS DE ALIMENTACION E",
+              "start_date": "22/06/2026",
+              "end_date": "26/06/2026",
+              "days": {
+                "Lunes": "14:00-18:00",
+                "Martes": "14:00-18:00",
+                "Miércoles": "14:00-18:00",
+                "Jueves": "14:00-18:00",
+                "Viernes": "14:00-18:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "SERVICIOS DE ALIMENTACION E",
+              "start_date": "29/06/2026",
+              "end_date": "29/06/2026",
+              "days": {
+                "Lunes": "14:00-16:00"
+              },
+              "hours": 2,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "MANTENCION DE HIGIENE PERSONAL",
+              "start_date": "30/06/2026",
+              "end_date": "03/07/2026",
+              "days": {
+                "Martes": "14:00-18:00",
+                "Miércoles": "14:00-18:00",
+                "Jueves": "14:00-18:00",
+                "Viernes": "14:00-18:00"
+              },
+              "hours": 16,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "MANTENCION DE HIGIENE PERSONAL",
+              "start_date": "06/07/2026",
+              "end_date": "10/07/2026",
+              "days": {
+                "Lunes": "14:00-18:00",
+                "Martes": "14:00-18:00",
+                "Miércoles": "14:00-18:00",
+                "Jueves": "14:00-18:00",
+                "Viernes": "14:00-18:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "MANTENCION DE HIGIENE PERSONAL",
+              "start_date": "13/07/2026",
+              "end_date": "15/07/2026",
+              "days": {
+                "Lunes": "14:00-18:00",
+                "Martes": "14:00-18:00",
+                "Miércoles": "14:00-15:00"
+              },
+              "hours": 9,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "ATENCIONES BASICAS DE SALUD",
+              "start_date": "16/07/2026",
+              "end_date": "17/07/2026",
+              "days": {
+                "Jueves": "14:00-18:00",
+                "Viernes": "14:00-18:00"
+              },
+              "hours": 8,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "ATENCIONES BASICAS DE SALUD",
+              "start_date": "20/07/2026",
+              "end_date": "24/07/2026",
+              "days": {
+                "Lunes": "14:00-18:00",
+                "Martes": "14:00-18:00",
+                "Miércoles": "14:00-18:00",
+                "Jueves": "14:00-18:00",
+                "Viernes": "14:00-18:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "ATENCIONES BASICAS DE SALUD",
+              "start_date": "27/07/2026",
+              "end_date": "31/07/2026",
+              "days": {
+                "Lunes": "14:00-18:00",
+                "Martes": "14:00-18:00",
+                "Miércoles": "14:00-18:00",
+                "Jueves": "14:00-18:00",
+                "Viernes": "14:00-15:00"
+              },
+              "hours": 17,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "ACTIVIDADES DE DESARROLLO",
+              "start_date": "03/08/2026",
+              "end_date": "07/08/2026",
+              "days": {
+                "Lunes": "14:00-18:00",
+                "Martes": "14:00-18:00",
+                "Miércoles": "14:00-18:00",
+                "Jueves": "14:00-18:00",
+                "Viernes": "14:00-18:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "ACTIVIDADES DE DESARROLLO",
+              "start_date": "10/08/2026",
+              "end_date": "11/08/2026",
+              "days": {
+                "Lunes": "14:00-18:00",
+                "Martes": "14:00-15:00"
+              },
+              "hours": 5,
+              "modality": "Semipresencial"
+            }
+          ]
+        },
+        {
+          "code": "20261602992",
+          "salida": "CUIDADOS Y ATENCION A PERSONAS ADULTAS",
+          "modalidad": "HABILITACION",
+          "regional": "DIRECCION REGIONAL ORIENTAL MAYORES",
+          "schedules": [
+            {
+              "materia": "NOCIONES GENERALES PARA EL",
+              "start_date": "29/06/2026",
+              "end_date": "02/07/2026",
+              "days": {
+                "Lunes": "18:00-22:00",
+                "Martes": "18:00-22:00",
+                "Miércoles": "18:00-22:00",
+                "Jueves": "18:00-21:00"
+              },
+              "hours": 15,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "MOVILIDAD Y SEGURIDAD EN LA",
+              "start_date": "03/07/2026",
+              "end_date": "03/07/2026",
+              "days": {
+                "Viernes": "18:00-22:00"
+              },
+              "hours": 4,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "MOVILIDAD Y SEGURIDAD EN LA",
+              "start_date": "06/07/2026",
+              "end_date": "10/07/2026",
+              "days": {
+                "Lunes": "18:00-22:00",
+                "Martes": "18:00-22:00",
+                "Miércoles": "18:00-22:00",
+                "Jueves": "18:00-22:00",
+                "Viernes": "18:00-22:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "MOVILIDAD Y SEGURIDAD EN LA",
+              "start_date": "13/07/2026",
+              "end_date": "16/07/2026",
+              "days": {
+                "Lunes": "18:00-22:00",
+                "Martes": "18:00-22:00",
+                "Miércoles": "18:00-22:00",
+                "Jueves": "18:00-22:00"
+              },
+              "hours": 16,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "SERVICIOS DE ALIMENTACION E",
+              "start_date": "17/07/2026",
+              "end_date": "17/07/2026",
+              "days": {
+                "Viernes": "18:00-22:00"
+              },
+              "hours": 4,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "SERVICIOS DE ALIMENTACION E",
+              "start_date": "20/07/2026",
+              "end_date": "24/07/2026",
+              "days": {
+                "Lunes": "18:00-22:00",
+                "Martes": "18:00-22:00",
+                "Miércoles": "18:00-22:00",
+                "Jueves": "18:00-22:00",
+                "Viernes": "18:00-22:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "SERVICIOS DE ALIMENTACION E",
+              "start_date": "27/07/2026",
+              "end_date": "28/07/2026",
+              "days": {
+                "Lunes": "18:00-22:00",
+                "Martes": "18:00-20:00"
+              },
+              "hours": 6,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "MANTENCION DE HIGIENE PERSONAL",
+              "start_date": "29/07/2026",
+              "end_date": "31/07/2026",
+              "days": {
+                "Miércoles": "18:00-22:00",
+                "Jueves": "18:00-22:00",
+                "Viernes": "18:00-22:00"
+              },
+              "hours": 12,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "MANTENCION DE HIGIENE PERSONAL",
+              "start_date": "03/08/2026",
+              "end_date": "07/08/2026",
+              "days": {
+                "Lunes": "18:00-22:00",
+                "Martes": "18:00-22:00",
+                "Miércoles": "18:00-22:00",
+                "Jueves": "18:00-22:00",
+                "Viernes": "18:00-22:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "MANTENCION DE HIGIENE PERSONAL",
+              "start_date": "10/08/2026",
+              "end_date": "13/08/2026",
+              "days": {
+                "Lunes": "18:00-22:00",
+                "Martes": "18:00-22:00",
+                "Miércoles": "18:00-22:00",
+                "Jueves": "18:00-19:00"
+              },
+              "hours": 13,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "ATENCIONES BASICAS DE SALUD",
+              "start_date": "14/08/2026",
+              "end_date": "14/08/2026",
+              "days": {
+                "Viernes": "18:00-22:00"
+              },
+              "hours": 4,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "ATENCIONES BASICAS DE SALUD",
+              "start_date": "17/08/2026",
+              "end_date": "21/08/2026",
+              "days": {
+                "Lunes": "18:00-22:00",
+                "Martes": "18:00-22:00",
+                "Miércoles": "18:00-22:00",
+                "Jueves": "18:00-22:00",
+                "Viernes": "18:00-22:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "ATENCIONES BASICAS DE SALUD",
+              "start_date": "24/08/2026",
+              "end_date": "28/08/2026",
+              "days": {
+                "Lunes": "18:00-22:00",
+                "Martes": "18:00-22:00",
+                "Miércoles": "18:00-22:00",
+                "Jueves": "18:00-22:00",
+                "Viernes": "18:00-22:00"
+              },
+              "hours": 20,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "ATENCIONES BASICAS DE SALUD",
+              "start_date": "31/08/2026",
+              "end_date": "31/08/2026",
+              "days": {
+                "Lunes": "18:00-19:00"
+              },
+              "hours": 1,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "ACTIVIDADES DE DESARROLLO",
+              "start_date": "01/09/2026",
+              "end_date": "04/09/2026",
+              "days": {
+                "Martes": "18:00-22:00",
+                "Miércoles": "18:00-22:00",
+                "Jueves": "18:00-22:00",
+                "Viernes": "18:00-22:00"
+              },
+              "hours": 16,
+              "modality": "Semipresencial"
+            },
+            {
+              "materia": "ACTIVIDADES DE DESARROLLO",
+              "start_date": "07/09/2026",
+              "end_date": "09/09/2026",
+              "days": {
+                "Lunes": "18:00-22:00",
+                "Martes": "18:00-22:00",
+                "Miércoles": "18:00-19:00"
+              },
+              "hours": 9,
+              "modality": "Semipresencial"
+            }
+          ]
+        },
+        {
+          "code": "20260707808",
+          "salida": "TRABAJO EN EQUIPO",
+          "modalidad": "CAPACITACION PERMANENTE",
+          "regional": "DIRECCION REGIONAL METROPOLITANA",
+          "schedules": [
+            {
+              "materia": "N/A",
+              "start_date": "06/08/2026",
+              "end_date": "07/08/2026",
+              "days": {
+                "Jueves": "08:00-12:00",
+                "Viernes": "08:00-12:00"
+              },
+              "hours": 8,
+              "modality": "Presencial"
+            }
+          ]
+        },
+        {
+          "code": "20260707944",
+          "salida": "INTELIGENCIA EMOCIONAL",
+          "modalidad": "CAPACITACION PERMANENTE",
+          "regional": "DIRECCION REGIONAL METROPOLITANA",
+          "schedules": [
+            {
+              "materia": "N/A",
+              "start_date": "13/08/2026",
+              "end_date": "14/08/2026",
+              "days": {
+                "Jueves": "08:00-12:00",
+                "Viernes": "08:00-12:00"
+              },
+              "hours": 8,
+              "modality": "Presencial"
+            }
+          ]
+        },
+        {
+          "code": "20261603707",
+          "salida": "DEBIDA DILIGENCIA, PREVENCIÓN DE SOBORNO",
+          "modalidad": "CAPACITACION PERMANENTE",
+          "regional": "DIRECCION REGIONAL ORIENTAL Y CORRUPCIÓN",
+          "schedules": [
+            {
+              "materia": "N/A",
+              "start_date": "17/08/2026",
+              "end_date": "18/08/2026",
+              "days": {
+                "Lunes": "08:00-12:00",
+                "Martes": "08:00-12:00"
+              },
+              "hours": 8,
+              "modality": "Presencial"
+            }
+          ]
+        },
+        {
+          "code": "20260707948",
+          "salida": "MANEJO EFECTIVO DEL TIEMPO",
+          "modalidad": "CAPACITACION PERMANENTE",
+          "regional": "DIRECCION REGIONAL METROPOLITANA",
+          "schedules": [
+            {
+              "materia": "N/A",
+              "start_date": "20/08/2026",
+              "end_date": "21/08/2026",
+              "days": {
+                "Jueves": "08:00-12:00",
+                "Viernes": "08:00-12:00"
+              },
+              "hours": 8,
+              "modality": "Presencial"
+            }
+          ]
+        },
+        {
+          "code": "20260707951",
+          "salida": "MANEJO DE LAS RELACIONES",
+          "modalidad": "CAPACITACION PERMANENTE",
+          "regional": "DIRECCION REGIONAL METROPOLITANA INTERPERSONALES",
+          "schedules": [
+            {
+              "materia": "N/A",
+              "start_date": "27/08/2026",
+              "end_date": "28/08/2026",
+              "days": {
+                "Jueves": "08:00-12:00",
+                "Viernes": "08:00-12:00"
+              },
+              "hours": 8,
+              "modality": "Presencial"
+            }
+          ]
+        },
+        {
+          "code": "20260708594",
+          "salida": "MANEJO DE ESTRES LABORAL",
+          "modalidad": "CAPACITACION PERMANENTE",
+          "regional": "DIRECCION REGIONAL METROPOLITANA",
+          "schedules": [
+            {
+              "materia": "N/A",
+              "start_date": "03/09/2026",
+              "end_date": "04/09/2026",
+              "days": {
+                "Jueves": "08:00-12:00",
+                "Viernes": "08:00-12:00"
+              },
+              "hours": 8,
+              "modality": "Presencial"
+            }
+          ]
+        },
+        {
+          "code": "20260708591",
+          "salida": "PLANIFICACION Y ORGANIZACION DEL TRABAJO",
+          "modalidad": "CAPACITACION PERMANENTE",
+          "regional": "DIRECCION REGIONAL METROPOLITANA",
+          "schedules": [
+            {
+              "materia": "N/A",
+              "start_date": "10/09/2026",
+              "end_date": "11/09/2026",
+              "days": {
+                "Jueves": "08:00-12:00",
+                "Viernes": "08:00-12:00"
+              },
+              "hours": 8,
+              "modality": "Presencial"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "facilitator_name": "JOHAN MANUEL TAPIA BUENO",
       "facilitator_doc": "001-0527055-7",
       "courses": [
