@@ -874,12 +874,12 @@
                             const dy = String(d.getDate()).padStart(2, '0');
                             const dateStr = `${yr}-${mo}-${dy}`;
 
-                            const start12 = formatHour12h(block.start);
-                            const end12 = formatHour12h(block.end);
+                            const h1 = parseInt(block.start.split(':')[0]);
+                            const h2 = parseInt(block.end.split(':')[0]);
                             const dur = getDurationText(block.start, block.end);
 
                             events.push({
-                                title: `Disponible de ${start12} a ${end12} (${dur})`,
+                                title: `Disponible de ${h1} a ${h2} (${dur})`,
                                 start: `${dateStr}T${block.start}:00`,
                                 end: `${dateStr}T${block.end}:00`,
                                 color: '#10b981',
@@ -1048,6 +1048,9 @@
                         // User wants to see free schedules (gaps) highlighted in green
                         if (matches.length === 0) {
                             tdDay.className = "p-3 text-xs border-r border-slate-100 relative min-w-[120px] bg-emerald-50/50";
+                            const h1 = parseInt(block.start.split(':')[0]);
+                            const h2 = parseInt(block.end.split(':')[0]);
+                            const dur = getDurationText(block.start, block.end);
                             tdDay.innerHTML = `
                                 <div class="rounded px-2 py-1.5 border border-emerald-300 bg-emerald-50 text-emerald-800 text-[10px] font-bold shadow-sm space-y-0.5">
                                     <div class="flex items-center gap-1">
@@ -1055,7 +1058,7 @@
                                         <span>Disponible</span>
                                     </div>
                                     <div class="text-[9px] text-emerald-700 font-semibold leading-tight">
-                                        de ${formatHour12h(block.start)} a ${formatHour12h(block.end)} (${getDurationText(block.start, block.end)})
+                                        de ${h1} a ${h2} (${dur})
                                     </div>
                                 </div>
                             `;
